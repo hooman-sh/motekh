@@ -1,0 +1,43 @@
+@import '../../styles/variables'
+
+.slider
+
+	&--hero
+
+		.owl-item
+			overflow hidden
+
+		& ^[0]__item
+			position relative
+
+			height $heroHeight
+			width 100vw
+
+			@media (orientation: portrait) and (min-width $sm)
+				height 47rem
+
+			background-size cover
+			background-repeat no-repeat
+			background-position center center
+
+			for n in (1..5)
+				.webp	&--{n}
+					background-image url($slider + n + '.webp')
+
+				.no-webp &--{n}
+				.no-js &--{n}
+					background-image url($slider + n + '.jpg')
+
+			@media (max-width $xl - 1)
+				&--1
+					background-position 67% 0
+
+				&--2
+				&--3
+					background-position 30% 0
+
+				&--4
+					background-position 42% 0
+
+				&--5
+					background-position 71% 0

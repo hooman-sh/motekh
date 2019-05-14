@@ -1,0 +1,116 @@
+@import '../../styles/variables'
+
+.features
+	position relative
+	color #fff
+
+	padding 4.5rem 3.5rem 6rem
+	min-height 425px
+
+	background $color
+
+	@media (min-width $xl)
+		padding-left 4rem
+		padding-right 4rem
+
+	&__grid
+		> div:first-child
+			@media (min-width $md) and (max-width 1199px)
+				width 50%
+
+	&__col
+		//
+
+	&__item
+		position relative
+
+		margin-bottom 4.5rem
+		padding-right 3.5rem
+
+		@media (max-width $md - 1)
+			text-align center
+
+		~/__col &:last-child
+			margin-bottom 0
+
+		&:before
+			content ''
+			width 2.5rem
+			height 2.5rem
+
+			position absolute
+
+			top -40%
+			right 0
+			bottom 0
+
+			margin auto 0
+
+			background url('../images/features/check.png') no-repeat center center
+			background-size contain
+
+	&__icon
+		margin 0 .25rem
+		width 4rem
+
+	&__text
+		overflow-wrap break-word
+		word-wrap break-word
+
+		font-size 1rem
+		font-weight 900
+		line-height 2
+
+	&__phone
+		position absolute
+
+		height 600px
+
+		top -100px
+		left 0
+		bottom 0
+
+		margin auto
+
+		display flex
+		align-items center
+		justify-content center
+
+		padding 0 2.5rem
+		text-align center
+
+		img
+			max-height 100%
+			max-width 100%
+			user-select none
+			text-align left
+
+		@media (min-width $xl)
+			padding-left 7%
+
+		@media (max-width $md - 1)
+			display block
+			position static
+
+			// padding 0 13%
+			height auto
+
+			margin 1rem auto 0
+
+		@media (max-width $sm - 1)
+			max-width none
+			max-height none
+
+			// padding 0
+			width 100%
+
+	@media (max-width $xl - 1)
+		padding 2.4rem .7rem
+
+		&__col
+		&__item
+			margin-bottom 2.5rem
+
+	@media (max-width $md - 1)
+		&__col:last-child
+			margin-bottom 0

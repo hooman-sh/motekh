@@ -1,0 +1,64 @@
+<div class="modal-header">
+	<div class="modal__close">
+		<button id="modal__close" type="button" uk-close ng-click='Ctrl.cancel()'></button>
+	</div>
+	<img class="center-block logo-size" ng-show="!started" src="./images/logo-new-blue-black.png" alt="First slide">
+</div>
+
+<div class="modal-body">
+	<!-- <select ng-model="proffName" ng-options="job.title group by job.tags for job in jobs" id="myinput" type="text" placeholder="نام تخصص" class="uk-width-1-1"></select> -->
+	<div class="uk-margin-bottom">
+		<p ng-if='Ctrl.creatingProject'>
+			با ثبت رایگان پروژه از چندیدن متخصص پیشنهاد دریافت کنید
+		</p>
+		<p ng-if='!Ctrl.creatingProject'>
+			شما می توانید هم زمان در ۳ تخصص به عنوان متخصص فعالیت کنید و پروژه بگیرید
+		</p>
+	</div>
+	<div class="autocomplete">
+		<input typeahead id="autocomplete__field" class="autocomplete__field" ng-enter='!Ctrl.professionsIsFull && Ctrl.submit()' tabindex='0' dir="rtl" ng-model='proff.selected' placeholder='{{ Ctrl.creatingProject ? "به چه متخصصی نیاز دارید" : "تخصص خود را انتخاب کنید" }}' title='{{ Ctrl.creatingProject ? "به چه متخصصی نیاز دارید" : "تخصص خود را انتخاب کنید" }}' />
+	</div>
+	<!-- /.autocomplete -->
+</div>
+
+<div class="modal-footer uk-text-center">
+
+	<!-- Profession is already selected -->
+	<div uk-alert class="uk-alert uk-alert-danger" ng-show='proffAlreadySelected && (Ctrl.err && !Ctrl.professionsIsFull)'>
+		<div>
+			این تخصص از تخصص های شما می باشد
+		</div>
+	</div>
+	<!-- Three Professions is selected -->
+	<div uk-alert class="uk-alert uk-alert-danger" ng-show='Ctrl.professionsIsFull && Ctrl.err'>
+		<div>
+			حداکثر ۳ تخصص میتوانید انتخاب کنید
+		</div>
+	</div>
+	<!-- Profession is not valid -->
+	<div uk-alert class="uk-alert uk-alert-danger" ng-show='!proffIsValid && (Ctrl.err && !Ctrl.professionsIsFull)'>
+		<div>
+			تخصص را به درستی انتخاب کنید
+		</div>
+	</div>
+
+	<!-- Server Error -->
+	<div ng-if='!Ctrl.creatingProject'>
+		<div class="uk-alert uk-alert-danger" ng-show="(Ctrl.serverErr && proffIsValid) && (Ctrl.err && !Ctrl.professionsIsFull)">
+			<a ng-click="addProffErr=false" class="uk-alert-close" uk-close></a>
+			<div>
+				مجاز به انتخاب این تخصص نیستید!
+			</div>
+		</div>
+		<button promise-btn='Ctrl.promise' id="takhasosbutt" ng-disabled='Ctrl.professionsIsFull' type="button" class="uk-button uk-button-primary" ng-click="Ctrl.submit()">افزودن</button>
+	</div>
+	<div ng-if='Ctrl.creatingProject'>
+		<div class="uk-alert uk-alert-danger" ng-show='getQuestionsErr'>
+			<a ng-click="getQuestionsErr = false" uk-close></a>
+			<div>
+				دریافت سوالات انجام نشد، مجددا تلاش کنید!
+			</div>
+		</div>
+		<button promise-btn="Ctrl.promise" ng-click='Ctrl.submit()' type="button" class="uk-button uk-button-primary">شروع</button>
+	</div>
+</div>

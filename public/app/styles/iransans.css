@@ -1,0 +1,29 @@
+
+@font-face {
+  font-family: IRANSans;
+  src: url(../fonts/iransans/IRANSans-UltraLight-web.eot);
+  src: url(../fonts/iransans/IRANSans-UltraLight-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-UltraLight-web.woff) format("woff"), url(../fonts/iransans/IRANSans-UltraLight-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-UltraLight-web.woff) format("svg");
+  font-weight: 100
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(../fonts/iransans/IRANSans-Light-web.eot);
+  src: url(../fonts/iransans/IRANSans-Light-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-Light-web.woff) format("woff"), url(../fonts/iransans/IRANSans-Light-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-Light-web.woff) format("svg");
+  font-weight: 400
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(../fonts/iransans/IRANSans-Medium-web.eot);
+  src: url(../fonts/iransans/IRANSans-Medium-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-Medium-web.woff) format("woff"), url(../fonts/iransans/IRANSans-Medium-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-Medium-web.woff) format("svg");
+  font-weight: 600
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(../fonts/iransans/IRANSans-Bold-web.eot);
+  src: url(../fonts/iransans/IRANSans-Bold-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-Bold-web.woff) format("woff"), url(../fonts/iransans/IRANSans-Bold-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-Bold-web.woff) format("svg");
+  font-weight: 700
+}
+
+.persian {
+  font-family: IRANSans;
+}

@@ -1,0 +1,64 @@
+ul.navbar-right li {
+    float: right !important;
+}
+
+.navbar-collapse.collapse.in ul.navbar-right li {
+    float: none !important;
+}
+.navbar-collapse.collapsing ul.navbar-right li {
+    float: none !important;
+}
+
+ul.navbar-right li {
+    text-align: right;
+}
+
+.btn-make-job {
+    margin-left: 65px;
+    font-weight: 100;
+    min-width: 120px;
+    border-radius: 20px;
+    color: white;
+    background-color: #18a3fa;
+    border-color: #18a3fa;
+}
+
+.navbar-default {
+    border-color: #ffffff;
+    background-color: #ffffff;
+    border-bottom-color: black !important;
+    border-bottom-width: 1px !important;
+    border-radius: 0 !important;
+}
+
+.btn-make-job:hover {
+    color: whitesmoke;
+    background-color: #0097fa;
+    border-color: #18a3fa;
+}
+
+.navbar-default {
+    border-color: #ffffff;
+    background-color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #000;
+    border-bottom: 4px solid #FFFFFF;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #333;
+    /*background-color: #FFFFFF;*/
+    border-bottom: 4px solid #18a3fa;
+}
+
+a.navbar-brand{
+    padding: 0;
+    padding-top: 2%;
+}
+
+ul.navbar-right li a .badge{
+    font-weight: 100;
+    background-color: orangered;
+}

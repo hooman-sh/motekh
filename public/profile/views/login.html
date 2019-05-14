@@ -1,0 +1,77 @@
+<div class="login" uk-height-viewport="expand: true">
+	<div class="uk-container uk-container-expand uk-height-1-1">
+		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center">
+			<div class="card">
+				<div class="card__body">
+					<form id="" class="form form--login" name='loginForm' ng-submit='login()' novalidate>
+						<div class="uk-text-center">
+							<div class="uk-margin-medium-bottom">
+								<a ui-sref="landing.home">
+									<img src="./images/logo-new-blue-black.png" style="max-width: 130px">
+								</a>
+							</div>
+							<!-- /.uk-margin-bottom -->
+							<div uk-grid class="uk-grid-small uk-child-width-1-1">
+								<div class="form__row">
+									<input placeholder="شماره همراه" name="username" type="text" required ng-model="loginInf.username" class="uk-input" autofocus>
+								</div>
+								<!-- /.form__row -->
+								<div class="form__row">
+									<input placeholder="رمز عبور" name="password" type="password" required ng-model="loginInf.password" class="uk-input">
+								</div>
+								<!-- /.form__row -->
+								<div class="form__row">
+									<div class="password-reset">
+										<a class="uk-button uk-button-link uk-button-small" ng-click="resetPassModal()">فراموشی رمز عبور؟</a>
+									</div>
+								</div>
+								<!-- /.form__row -->
+								<div class="form__row">
+									<button promise-btn name="submit" type="submit" id="contact-submit" data-submit="ورود..." ng-click="login()" class="uk-button uk-button-primary u-b--9">ورود</button>
+								</div>
+								<!-- /.form__row -->
+								<div class="form__row">
+									<div uk-alert class="uk-alert-danger" ng-show="showLoginMsg">
+										{{login_msg}}
+									</div>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<!-- /.uk-grid-small uk-child-width-1-2@s -->
+						</div>
+					</form>
+				</div>
+				<!-- /.card__body -->
+				<div class="not-user">
+					<span style="color: #2B2A2A;">عضو جدید؟</span>
+					<a ui-sref="signup">ثبت نام کنید!</a>
+				</div>
+			</div>
+			<!-- /.card uk-width-5-6@m uk-width-1-2@l -->
+		</div>
+		<!-- /.uk-flex uk-height-1-1 uk-flex-middle uk-flex-center -->
+	</div>
+	<!-- /.verify__wrapper -->
+</div>
+<script type="text/ng-template" id="reset_password.html">
+	<div class="modal-body">
+		<form id="resetPass" class="form uk-text-center" name='reset_pass'>
+		<img class="center-block logo-size uk-margin-large-top uk-margin-large-bottom" src="../images/logo-new-blue-black.png" alt="جاپ - Jopp">
+			<p>برای بازیابی رمز عبور خود، لطفا شماره همراه‌‌تان را وارد کنید.</p>
+			<div class="uk-margin-top">
+				<input class="uk-input" name='phone' placeholder="شماره همراه (انگلیسی)" name="username" type="tel" pattern='\d*' tabindex="2" required ng-model="UserphoneNumber.mobile" ng-enter='!reset_pass.$invalid && resetPass2()'>
+			</div>
+			<div uk-alert class="uk-alert-success" ng-show="reset_done">
+				{{firstname_reset}} عزیز رمز عبور با موفقیت برای شما ارسال شد.
+			</div>
+			<div uk-alert class="uk-alert-danger" ng-show="reset_error">
+				{{reset_err_text}}
+				<button class="uk-button uk-button-default" ng-show="show_sigunUp" ui-sref="signup" ng-click="cancel()">ثبت نام کنید</button>
+			</div>
+		</form>
+		</div>
+		<div class="modal-footer">
+			<button form='resetPass' name="submit" type="submit" id="contact-submitt" data-submit="در حال ارسال..." class="uk-button uk-button-primary" ng-click="!reset_pass.$invalid && resetPass2()">ارسال</button>
+			<button form='resetPass' name="submit" class="uk-button uk-button-default" ng-click="cancel()">بازگشت</button>
+		</div>
+</script>

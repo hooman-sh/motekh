@@ -1,0 +1,250 @@
+@import 'variables'
+
+.modal
+	z-index 9999999 !important
+	overflow-y initial
+
+	&--over
+		z-index 99999999 !important
+
+	&__header
+		height 50px
+
+	&__title
+		line-height 1.9
+		font-size 1.1rem
+		font-weight 600
+		text-align center
+		margin 0 auto 1rem
+		max-width 370px
+
+	&__close
+	/.card__close
+		position absolute
+		top 0
+		left 0
+
+		> button
+		> a
+			padding 1rem
+
+	&__progress
+		margin-left 2.5rem
+		margin-right 2.5rem
+
+	&__intro
+		display flex
+		align-items center
+		justify-content center
+
+		text-align center
+		font-size 1.2rem
+		font-weight 500
+		color $black2
+		line-height 2
+		height 100%
+
+		p
+			max-width 300px
+			flex-basis 300px
+
+
+	&__footer
+		position relative
+		height 70px
+
+	&-footer
+		border-radius 0 0 6px 6px
+
+	&__skip
+		line-height 38px
+		margin-right 1rem
+
+	&__control
+		position absolute
+		height 40px
+
+		top 0
+		bottom 0
+
+		margin auto 0 !important
+
+		&--left
+			left 1rem
+
+		&--right
+			right 1rem
+
+	&-dialog
+		overflow-y initial
+		position absolute
+		top 0
+		left 0
+		right 0
+		bottom 0
+
+		&.modal--auto
+			position relative
+
+		@media (min-width: 768px)
+			height 600px
+			margin auto
+
+		@media (max-width 767px)
+			margin 0
+
+	&-content
+		display flex
+		flex-direction column
+		height 100%
+		border none
+
+		@media (max-width 767px)
+			border-radius 0
+
+	&-body
+		outline none
+		flex 1 1 0
+
+		> div
+			width 100%
+
+		.ui-select-container
+			margin-top 1.5rem
+
+		.carousel
+			flex 1 0 0
+
+		label
+			display block
+			cursor pointer
+			padding 1rem
+			font-size .85rem
+			border-bottom 1px solid #e0e0e0
+
+			input
+				vertical-align middle
+				margin-left .75rem
+				transition 0s
+				
+				&
+				&:focus
+					outline 0
+
+	&__row
+		&--last
+			label
+				border-bottom none
+
+	&-open &
+		height 100%
+
+
+	&-header
+	&-footer
+		border 0
+
+	&-open
+		height 100vh
+
+	&--slider
+		max-height 100%
+		overflow hidden
+		padding-left 15px
+		padding-right 15px
+
+	&--scroll
+		overflow-y auto
+
+	&--sm
+		max-height 400px
+		height 100%
+
+		@media (max-width 767px)
+			max-height 100%
+
+		.modal-body
+			flex-direction column
+			align-items stretch
+			text-align center
+			overflow initial
+
+			> *
+				flex none
+
+		.ui-select-placeholder
+			padding 0
+
+		.ui-select-bootstrap>.ui-select-match>.btn
+		.ui-select-search
+			text-align center !important
+
+	&--auto
+		display flex
+		align-items center
+		justify-content center
+		height auto
+
+		> .modal-content
+			flex 1 1 0
+			height auto
+
+	&--center
+		display flex !important
+		align-items center
+		justify-content center
+
+.left-carousel-control
+	margin-right auto
+
+.right-carousel-control
+	margin-left auto
+
+.select2
+	width 100% !important
+
+	&-container--open
+	&-results__group
+	/.datepicker-container
+	/.tt-menu
+		z-index 99999999 !important
+
+	&-results__group
+		font-weight 900
+
+.datepicker-plot-area
+.datepicker-plot-area
+	font-family inherit
+
+
+@media only screen and (max-device-width 480px)
+	.datepicker-container.pwt-mobile-view
+		top 0 !important
+		left 0 !important
+		bottom 0 !important
+
+		.uk-modal-dialog &
+			top -15px !important
+			left -15px !important
+			// bottom -15px !important
+
+@media (max-height 670px) and (orientation landscape)
+	.datepicker-container
+		top 50% !important
+		left 50% !important
+
+	.datepicker-plot-area
+		transform translate(-50%, -50%)
+
+.uk-tooltip
+	z-index 9999999
+	text-align center
+
+[uib-modal-window] ~ [ui-view]
+	min-height 100%
+	display flex
+	flex-flow column nowrap
+	justify-content space-between
+
+	> [ui-view]
+		flex 1 1 100%

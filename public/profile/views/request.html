@@ -1,0 +1,253 @@
+<div class="uk-container uk-container-small">
+	<div uk-grid>
+		<div class="uk-width-2-5@m">
+			<div id="request" class="uk-animation-slide-right-small card card--profile" ng-if='res'>
+				<div class="card__body card__body--sm">
+					<div class="uk-text-center">
+						<div class="card__avatar">
+							<img class="img-responsive img-circle" ng-src="{{res.job.creator.trust.profilePicture.filePath.replace('public/','')}}"/>
+							<img class="img-responsive img-circle" ng-if="!res.job.creator.trust.profilePicture.filePath" src="profile/images/unknown.jpg"/>
+						</div>
+						<div>
+							<div class="card__title">
+								{{res.job.creator.firstname}}
+								{{res.job.creator.lastname}}
+							</div>
+							<div class="card__sub">
+								متقاضی {{res.job.profession.title}}
+							</div>
+						</div>
+
+					</div>
+					<div class="uk-margin-top">
+
+						<div class="card__info--column">
+							<div>تاریخ ثبت</div>
+							<div>{{res.job.createdAt|dateConvertPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>تعداد رقبا</div>
+							<div>{{res.job.offers.length  | numberToPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>مکان</div>
+							<div>{{res.job.location}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>شماره تماس</div>
+							<div>{{res.job.phone | numberToPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>توضیحات مشتری</div>
+							<div>{{res.job.description | numberToPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>زمان مورد نظر مشتری</div>
+							<div>{{res.job.time | numberToPersia}}</div>
+						</div>
+						<div ng-repeat="attrs in res.job.attributes" class="card__info--column">
+							<div>{{attrs.title}}</div>
+							<div>
+								<div ng-repeat="option in attrs.options">{{option | numberToPersia}}</div>
+								<div ng-if="attrs.text!=undefined">{{attrs.text | numberToPersia}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.card__body -->
+			</div>
+		</div>
+		<!-- /.uk-width-2-5 -->
+		<div class="uk-width-3-5@m">
+			<div class="uk-animation-slide-right-small card card--footer-btn">
+				<div class="card__body">
+					<div id="messageScroll" class="msg">
+						<div class="msg__item" ng-repeat="message in messages" ng-class="message.from==user_id?'msg__item--right':'msg__item--left'">
+							{{message.text}}
+						</div>
+					</div>
+				</div>
+				<div>
+					<form ng-submit="sendMessage()" class="card__footer">
+						<div class="uk-padding-small uk-flex uk-flex-middle">
+							<input ng-model="pm" type="text" class="uk-input msg__input" placeholder="پیام خود را تایپ کنید">
+							<button ng-disabled="pm=='' || pm==undefined" type="submit" class="uk-button uk-button-primary msg__btn">ارسال</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /.uk-width-3-5 -->
+	</div>
+</div>
+
+<!-- moghayese ba roghaba-->
+<!-- <div class="row">
+
+  <div class="col-xs-12 margin_15" style=" ">
+    <div class="col-xs-5">
+      <div class="col-xs-12"> <h5 class="persian " style="text-align: center">تاریخ ثبت</h5></div>
+      <div class="col-xs-12 "> <h5 class="persian" dir="rtl" style="text-align: center;color: green">  {{res.job.createdAt|dateConvertPersia}}</h5></div>
+    </div>
+    <div class="col-xs-2">
+      <div class="ro"></div>
+    </div>
+    <div class="col-xs-5">
+      <div class="col-xs-12 "> <h5 class="persian " style="text-align: center">تعداد رقبا</h5></div>
+      <div class="col-xs-12 " style="text-align: center"> <h5 class="persian " dir="rtl" style="text-align: center; color: green">{{(res.job.offers.length-1) | numberToPersia}}</h5></div>
+    </div>
+
+  </div>
+  <div class="col-xs-12">
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="persian" dir="rtl" style="font-weight: 600;text-align: center">مقایسه وضعیت شما با سایر رقبا برای این پروژه</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12 mar15">
+                <h4 class="persian" dir="rtl">مقایسه میانگین امتیازی</h4>
+              </div>
+              <div class="col-xs-12 ll">
+                <div class="col-xs-4">
+                  <h4 class="persian" dir="rtl">از ۵ نظر ثبت شده</h4>
+                </div>
+
+
+                <div class="col-xs-4" style="text-align: center">
+                  <div >
+                    <span class="glyphicon glyphicon-star font_26"></span>
+                    <span class="glyphicon glyphicon-star font_26"></span>
+                    <span class="glyphicon glyphicon-star font_26"></span>
+                    <span class="glyphicon glyphicon-star font_26"></span>
+
+                  </div>
+                </div>
+                <div class="col-xs-4" style="text-align: right">
+                  <h4 class="persian" dir="rtl" style="display: inline">شما</h4>
+                  <img src="./images/" class="img-circle" style="max-width: 50px"/>
+
+                </div>
+
+              </div>
+              <div class="col-xs-12 ll">
+                <div class="col-xs-4">
+                  <h4 class="persian" dir="rtl">از ۵ نظر ثبت شده</h4>
+                </div>
+
+
+                <div class="col-xs-4" style="text-align: center">
+                  <div >
+                    <span class="glyphicon glyphicon-star font_26"></span>
+                    <span class="glyphicon glyphicon-star font_26"></span>
+                    <span class="glyphicon glyphicon-star font_26"></span>
+                    <span class="glyphicon glyphicon-star font_26"></span>
+
+                  </div>
+                </div>
+                <div class="col-xs-4" style="text-align: right">
+                  <h4 class="persian" dir="rtl" style="display: inline">شما</h4>
+                  <img src="./images/" class="img-circle" style="max-width: 50px"/>
+
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 mar15">
+                <h4 class="persian" dir="rtl">مقایسه مبلغ پیشنهادی</h4>
+              </div>
+              <div class="col-xs-12 ll ">
+                <div class="col-xs-4"><h5 class="persian" dir="rtl">\ساعتی</h5> </div>
+                <div class="col-xs-4"><h5 class="persian" dir="rtl" style="text-align: left">۷۵ هزار تومان</h5></div>
+                <div class="col-xs-4" style="text-align: right">
+                  <h4 class="persian" dir="rtl" style="display: inline">شما</h4>
+                  <img src="./images/" class="img-circle" style="max-width: 50px"/>
+
+                </div>
+              </div>
+              <div class="col-xs-12 ll">
+                <div class="col-xs-4"><h5 class="persian" dir="rtl">\ساعتی</h5> </div>
+                <div class="col-xs-4"><h5 class="persian" dir="rtl" style="text-align: left">۷۵ هزار تومان</h5></div>
+                <div class="col-xs-4" style="text-align: right">
+                  <h4 class="persian" dir="rtl" style="display: inline">شما</h4>
+                  <img src="./images/" class="img-circle" style="max-width: 50px"/>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div  class="col-xs-12 margin_15 " style="padding: 0">
+    <div class="col-xs-12" >
+      <h6 class="persian pull-right" style=" display: block;color: grey;font-size: 10px">مکان</h6>
+    </div>
+
+    <div class="col-xs-12" >
+      <div  class="h5 persian pull-right" style="">{{res.job.location | numberToPersia}}</div>
+    </div>
+    <div class="col-xs-10 pull-right">
+      <div class="roo"></div>
+    </div>
+  </div>
+  <div  class="col-xs-12 margin_15 " style="padding: 0">
+    <div class="col-xs-12" >
+      <h6 class="persian pull-right" style=" display: block;color: grey;font-size: 10px">شماره تماس</h6>
+    </div>
+
+    <div class="col-xs-12" >
+      <div  class="h5 persian pull-right" style="">{{res.job.phone | numberToPersia}}</div>
+    </div>
+    <div class="col-xs-10 pull-right">
+      <div class="roo"></div>
+    </div>
+  </div>
+  <div  class="col-xs-12 margin_15 " style="padding: 0">
+    <div class="col-xs-12" >
+      <h6 class="persian pull-right" style=" display: block;color: grey;font-size: 10px">توضیحات مشتری</h6>
+    </div>
+
+    <div class="col-xs-12" >
+      <div  class="h5 persian pull-right" style="">{{res.job.description | numberToPersia}}</div>
+    </div>
+    <div class="col-xs-10 pull-right">
+      <div class="roo"></div>
+    </div>
+  </div>
+  <div  class="col-xs-12 margin_15 " style="padding: 0">
+    <div class="col-xs-12" >
+      <h6 class="persian pull-right" style=" display: block;color: grey;font-size: 10px">زمان مورد نظر مشتری</h6>
+    </div>
+
+    <div class="col-xs-12" >
+      <div  class="h5 persian pull-right" style="">{{res.job.time | numberToPersia}}</div>
+    </div>
+    <div class="col-xs-10 pull-right">
+      <div class="roo "></div>
+    </div>
+  </div>
+  <div ng-repeat="attrs in res.job.attributes" class="col-xs-12 margin_15 " style="padding: 0">
+
+    <div class="col-xs-12" >
+      <h6 class="persian pull-right" style=" color: grey;font-size: 10px">{{attrs.title}}</h6>
+    </div>
+
+    <div class="col-xs-12" >
+      <div dir="rtl" ng-repeat="option in attrs.options" style="text-align: right"  class="h5 persian pull-right" >{{option | numberToPersia}}<span ng-hide="$index ==attrs.options.length-1 ">، </span></div>
+      <div dir="rtl" class="h5 persian pull-right" ng-if="attrs.text!=undefined">{{attrs.text | numberToPersia}}</div>
+    </div>
+    <div class="col-xs-10 pull-right">
+      <div class="roo "></div>
+    </div>
+  </div>
+
+
+
+</div> -->

@@ -1,0 +1,146 @@
+@import '../../styles/variables'
+
+.cat
+	position absolute
+
+	left 0
+	right 0
+	bottom 0
+
+	user-select none
+
+	background-color rgba(0,0,0,.75)
+
+	z-index 20
+
+	.owl-carousel
+		padding 0 4rem
+
+	.owl-stage
+		display flex
+		flex-flow row nowrap
+
+		align-items stretch
+
+		@media (min-width 890px)
+			justify-content center
+			width 100% !important
+
+	@media (max-width $sm - 1)
+		.owl-item
+			min-width 6rem
+
+	&__list
+		margin 0
+		padding 0
+		list-style none
+
+	&__item
+	&__link
+		height 100%
+
+	&__link
+		display flex
+		flex-direction column
+
+		justify-content center
+
+		padding .55rem .85rem
+		color #fff
+
+		text-align center
+		text-decoration none
+
+		white-space nowrap
+
+		@media (min-width $xl)
+			white-space normal
+
+		@media (max-width $lg - 1)
+			padding .45rem .75rem
+
+		&:hover
+		&:focus
+		&:active
+			color #fff
+			text-decoration none
+			background-color rgba(0,0,0,1)
+			& ^[0]__icon
+				opacity 1
+				text-shadow 0 0 30 rgba(255, 255, 255, .6)
+
+	&__icon
+		font-size 1.8rem
+		height 2.05rem
+		margin .25rem
+		opacity .85
+
+		[class^="icon-"]
+		[class*=" icon-"]
+			vertical-align text-top
+
+		@media (max-width $md - 1)
+			// font-size 1.6rem
+			// height 1.5rem
+
+	&__label
+		font-weight 900
+		font-size .75rem
+
+	.owl-nav
+		margin 0
+
+	&__arrow
+		position absolute
+
+		top 0
+		bottom 0
+
+		padding 0 1rem
+
+		cursor pointer
+
+		[class^='icon']
+		[class*='icon']
+			display table
+			height 100%
+
+			font-size 2rem
+			font-weight 100
+			color #fff
+
+			text-shadow 0 0 7px rgba(0,0,0,.3)
+
+			&:before
+				display table-cell
+				vertical-align middle
+
+		&:hover
+		&:focus
+			transition .15s
+
+		&:active
+			transition 0s
+
+		&--prev
+			right 0
+
+			&:hover
+			&:focus
+				transform translate3d(3px, 0, 0)
+
+			&:active
+				transform translate3d(5px, 0, 0)
+
+		&--next
+			left 0
+
+			&:hover
+			&:focus
+				transform translate3d(-3px, 0, 0)
+
+			&:active
+				transform translate3d(-5px, 0, 0)
+
+		&.disabled
+			opacity .25

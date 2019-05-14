@@ -1,0 +1,37 @@
+<div class="uk-container uk-container--md uk-height-1-1 customers" ng-show="customers" ng-init='$root.updateViewport()'>
+	<div ng-repeat="customer in $root.customers track by $index" class="uk-animation-slide-right-small card card--md customers__item"
+	 style='animation-delay: {{($index / 9)}}s'>
+		<a ui-sref='pages.customReq({id: customer._id})' tabindex="1" class="customers__link">
+			<div class="card__body">
+				<div class="uk-flex uk-flex-nowrap uk-flex-between">
+					<div class="uk-flex">
+						<div class="card__avatar">
+							<img ng-src="{{ customer.creator.trust.profilePicture.filePath.replace('public/','') }}" alt="" />
+							<img class="img-responsive img-circle" ng-if="!customer.creator.trust.profilePicture.filePath" src="profile/images/unknown.jpg"
+							/>
+						</div>
+						<div>
+							<!-- /.card__avatar -->
+							<div class="card__title">{{customer.creator.firstname}} {{customer.creator.lastname}}
+							</div>
+							<!-- /.card__title -->
+							<div class="card__sub">{{customer.city}} - متقاضی {{customer.profession[0].title}}</div>
+							<!-- /.card__sub -->
+						</div>
+					</div>
+					<div class="uk-width-auto card__date uk-text-nowrap" dir="rtl">{{customer.createdAt | dateToPersia | numberToPersia}}</div>
+				</div>
+				<div>
+					<p class="card__desc">{{customer.attrs | numberToPersia}}</p>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div ng-if="$root.customers.length == 0" class="page--empty">
+		<div class="uk-animation-shake uk-heading-line uk-text-center">
+			<span>
+				در حال حاضر مشتری برای شما نیست
+			</span>
+		</div>
+	</div>
+</div>

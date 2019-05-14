@@ -1,0 +1,148 @@
+@import 'variables'
+
+.u
+
+	&-h
+		// @heading
+		&--1
+		&--2
+			font-size 1.2rem
+			font-weight 900
+			margin-bottom .7rem
+
+		&--2
+			font-size 1rem
+
+		&--3
+			font-size 1rem
+			margin-bottom .6rem
+
+		&--4
+			font-size .75rem
+			margin-bottom .5rem
+
+	&-hr
+		// @header
+		&--1
+		&--2
+			font-size 1.2rem
+			font-weight 900
+			margin-bottom 1.6rem
+			text-align center
+			color $black1
+
+		&--1
+			margin-top 1.6rem
+
+		&--2
+			margin-top .9rem
+
+	&-b
+		// @weight
+		&--1
+			font-weight 100
+
+		&--3
+			font-weight 300
+
+		&--5
+			font-weight 600
+
+		&--7
+			font-weight 700
+
+		&--9
+			font-weight 900
+
+	&-s
+		// @size
+		&--1
+			font-size .5rem
+
+		&--2
+			font-size .75rem
+
+		&--3
+			font-size .9rem
+
+		&--4
+			font-size 1rem
+
+		&--5
+			font-size 1.2rem
+
+		&--7
+			font-size 3rem
+
+	&-c
+		// @color
+		&--1
+			color $black1
+
+		&--2
+			color $black2
+
+		&--3
+			color $black3
+
+	&-p
+		&--1
+			line-height 2
+			font-size .85rem
+			font-weight 600
+
+	&-w
+		// @width
+		&--1
+			min-width 100%
+
+.progress
+
+	.card--profile &
+		margin-top 2rem
+
+	&--md
+		max-width 15rem
+		margin-left auto
+		margin-right auto
+
+	&--over
+		.progress-bar:after
+			color #fff
+
+.input
+
+	&--large
+		font-weight 900
+		font-size 2.4rem
+		text-align center
+		width 300px
+		line-height 70px
+		height 70px !important
+
+	&::-webkit-input-placeholder
+		font-size 1.2rem
+		line-height 70px
+		transform translateY(-5px)
+
+	&::-moz-placeholder
+		font-size 1.2rem
+		line-height 70px
+		transform translateY(-5px)
+
+	&:-ms-input-placeholder
+		font-size 1.2rem
+		line-height 70px
+		transform translateY(-5px)
+
+	&__meta
+		margin-top .2rem
+		color #757575
+		font-size .8rem
+		line-height 1.6
+
+		&--mt
+			margin-top .55rem
+
+.ui-select-placeholder
+		padding-right 1rem

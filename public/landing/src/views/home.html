@@ -1,0 +1,280 @@
+<main class='home'>
+
+	<div class="hero hero--home" id='hero'>
+		<div class="hero__back">
+			<div class="slider slider--hero" owl-carousel='heroSlider'>
+				<div class="item slider__item slider__item--1"></div>
+				<!-- /.slider__item -->
+				<div class="item slider__item slider__item--2"></div>
+				<!-- /.slider__item -->
+				<div class="item slider__item slider__item--3"></div>
+				<!-- /.slider__item -->
+				<div class="item slider__item slider__item--4"></div>
+				<!-- /.slider__item -->
+				<div class="item slider__item slider__item--5"></div>
+				<!-- /.slider__item -->
+			</div>
+			<!-- /.slider -->
+		</div>
+		<!-- /.hero__back -->
+		<div class="hero__front">
+
+			<div class="hero__content" id='hero__content'>
+				<div class="hero__text">
+					<h2 class="hero__title">هر کاری داری بگو !</h2>
+					<!-- /.hero__title -->
+					<p class="hero__sub">از مدرس زبان و برنامه نویس تا مربی بدن سازی و نقاش ساختمان, ما مناسبترین فرد را
+						<span class='hero__sub--blue'>کاملاً رایگان</span>
+						برای ارائه‌ی خدمت به شما معرفی می کنیم</p>
+					<!-- /.hero__sub -->
+				</div>
+				<!-- /.hero__text -->
+				<div id='autocomplete' class="autocomplete autocomplete--hero">
+					<div class="autocomplete__form">
+						<input typeahead id="autocomplete__field" class="autocomplete__field" ng-enter='get_questions()' tabindex='1' dir="rtl" ng-model='ac_text' placeholder="به چه متخصصی نیاز دارید؟" title="به چه متخصصی نیاز دارید؟" autocomplete=""/>
+						<button type='button' tabindex='2' ng-click="get_questions()" class="autocomplete__btn" ng-disabled="$root.isModalOpen">ادامه</button>
+					</div>
+					<!-- /.autocomplete__form -->
+				</div>
+			</div>
+			<!-- /.hero__content -->
+		</div>
+		<!-- /.hero__front -->
+		<div class="cat cat--hero">
+			<ul class='cat__list' owl-carousel='catSlider'>
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "5"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-art"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">خدمات هنری</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "3"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-sport"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">ورزش و سلامت</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "0"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-house"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">خدمات منزل</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "6"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-educate"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">خدمات آموزشی</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "7"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-tech"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">فنی و مهندسی</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "1"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-computer"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">خدمات کامپیوتری</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "4"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-job"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">کسب و کار</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "2"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-lang"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">زبان های خارجه</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+				<li class="cat__item">
+					<a ui-sref='landing.services({id: "8"})' class="cat__link">
+						<div class="cat__icon">
+							<i class="icon-other"></i>
+						</div>
+						<!-- /.cat__icon -->
+						<div class="cat__label">سایر</div>
+						<!-- /.cat__label -->
+					</a>
+				</li>
+				<!-- /.cat__item -->
+			</ul>
+		</div>
+		<!-- /.car -->
+	</div>
+	<!-- /.hero -->
+
+	<div class="howitworks" id="howitworks">
+		<div class="uk-container uk-container-expand">
+			<div>
+				<h3 class="howitworks__heading">چگونه کار می کند</h3>
+				<!-- /.howitworks_heading -->
+			</div>
+			<!-- /.row -->
+			<div uk-grid class="uk-child-width-1-3@m">
+				<div>
+					<div class="howitworks__item">
+						<div class="howitworks__icon">
+							<i class="icon-circle icon--back"></i>
+							<i class="icon-list icon--front"></i>
+						</div>
+						<!-- /.howitworks__icon -->
+						<div class="howitworks__text">
+							<div class="howitworks__title">ثبت رایگان پروژه</div>
+							<!-- /.howitworks__title -->
+							<div class="howitworks__desc">در ابتدا مشخص کنید به چه متخصصی نیاز دارید و به سوالات ما پاسخ دهید</div>
+							<!-- /.howitworks__desc -->
+						</div>
+						<!-- /.howitworks__text -->
+					</div>
+					<!-- /.howitworks__item -->
+				</div>
+				<!-- /.uk-width-1-3@m -->
+				<div>
+					<div class="howitworks__item">
+						<div class="howitworks__icon">
+							<i class="icon-circle icon--back"></i>
+							<i class="icon-people icon--front"></i>
+						</div>
+						<!-- /.howitworks__icon -->
+						<div class="howitworks__text">
+							<div class="howitworks__title">بررسی و مقایسه</div>
+							<!-- /.howitworks__title -->
+							<div class="howitworks__desc">در عرض چند ساعت چندین پیشنهاد قیمت از متخصصین دریافت می کنید</div>
+							<!-- /.howitworks__desc -->
+						</div>
+						<!-- /.howitworks__text -->
+					</div>
+					<!-- /.howitworks__item -->
+				</div>
+				<!-- /.uk-width-1-3@m -->
+				<div>
+					<div class="howitworks__item">
+						<div class="howitworks__icon">
+							<i class="icon-circle icon--back"></i>
+							<i class="icon-check icon--front"></i>
+						</div>
+						<!-- /.howitworks__icon -->
+						<div class="howitworks__text">
+							<div class="howitworks__title">انتخاب</div>
+							<!-- /.howitworks__title -->
+							<div class="howitworks__desc">پس از بررسی قیمت, پروفایل, درصد اطمینان و ... , فرد مناسب را انتخاب کنید</div>
+							<!-- /.howitworks__desc -->
+						</div>
+						<!-- /.howitworks__text -->
+					</div>
+					<!-- /.howitworks__item -->
+				</div>
+				<!-- /.uk-width-1-3@m -->
+			</div>
+			<!-- /.uk-grid -->
+		</div>
+		<!-- /.howitworks -->
+	</div>
+	<!-- /.howitworks -->
+
+	<div class="features" id='features'>
+		<div class="uk-container uk-container-expand">
+			<div uk-grid class="features__grid">
+				<div class="uk-width-2-3@l">
+					<div uk-grid='margin: 0' class="uk-child-width-1-2@l">
+						<div class="features__col">
+							<div class="features__item">
+								<span class="features__text">ثبت رایگان پروژه</span>
+								<!-- /.features__text -->
+							</div>
+							<!-- /.features__item -->
+							<div class="features__item">
+								<span class="features__text">انتخاب متخصص مناسب با شرایط شما</span>
+								<!-- /.features__text -->
+							</div>
+							<!-- /.features__item -->
+							<div class="features__item">
+								<span class="features__text">قیمت دهی بر اساس خواسته دقیق شما</span>
+								<!-- /.features__text -->
+							</div>
+							<!-- /.features__item -->
+						</div>
+						<!-- /.features__col -->
+						<div class="features__col">
+							<div class="features__item">
+								<span class="features__text">بدون گرفتن کمیسیون</span>
+								<!-- /.features__text -->
+							</div>
+							<!-- /.features__item -->
+							<div class="features__item">
+								<span class="features__text">ارزیابی عملکرد و رتبه بندی متخصصین</span>
+								<!-- /.features__text -->
+							</div>
+							<!-- /.features__item -->
+							<div class="features__item">
+								<span class="features__text">امکان مذاکره و ارتباط مستقیم با متخصصین</span>
+								<!-- /.features__text -->
+							</div>
+							<!-- /.features__item -->
+						</div>
+						<!-- /.features__col -->
+					</div>
+					<!-- /.uk-grid -->
+				</div>
+				<!-- /.uk-width-2-3@m -->
+				<div class="features__phone">
+					<img class='lazy' alt="Jopp App" data-src="/landing/assets/images/features/mobile.png">
+				</div>
+				<!-- /.phone -->
+			</div>
+			<!-- /.uk-grid -->
+			<div>
+				<div class="badge"></div>
+				<!-- /.badge -->
+			</div>
+			<!-- /. -->
+		</div>
+		<!-- /.container features -->
+	</div>
+	<!-- /.features -->
+
+</main>

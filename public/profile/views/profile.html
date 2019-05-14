@@ -1,0 +1,382 @@
+<script>
+	var $el,
+		$ps,
+		$up,
+		totalHeight;
+
+	$(".sidebar-box .button").click(function () {
+
+		totalHeight = 0;
+
+		$el = $(this);
+		$p = $el.parent();
+		$up = $p.parent();
+		$ps = $up.find("p:not('.read-more')");
+
+		// measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
+		$ps.each(function () {
+			totalHeight += $(this).outerHeight();
+		});
+
+		$up.css({
+			// Set height to prevent instant jumpdown when max height is removed
+			"height": $up.height(),
+			"max-height": 9999
+		}).animate({
+			"height": totalHeight
+		});
+
+		// fade out read-more
+		$p.fadeOut();
+
+		// prevent jump-down
+		return false;
+
+	});
+</script>
+<script>
+	var $el,
+		$ps,
+		$up,
+		totalHeight;
+
+	$(".ss .button").click(function () {
+
+		totalHeight = 0;
+
+		$el = $(this);
+		$p = $el.parent();
+		$up = $p.parent();
+		$ps = $up.find("div");
+
+		// measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
+		$ps.each(function () {
+			totalHeight += $(this).outerHeight();
+		});
+
+		$up.css({
+			// Set height to prevent instant jumpdown when max height is removed
+			"height": $up.height(),
+			"max-height": 9999
+		}).animate({
+			"height": totalHeight
+		});
+
+		// fade out read-more
+		$p.fadeOut();
+
+		// prevent jump-down
+		return false;
+
+	});
+</script>
+<div class="uk-container uk-container--md">
+	<div uk-grid="uk-grid">
+		<div class="uk-width-2-5@s">
+			<div id="profile-card" class="uk-animation-slide-right-small card card--profile" ng-if='offer'>
+				<div uk-grid="uk-grid" class="uk-grid-small uk-grid-collapse uk-grid-divider uk-child-width-1-1">
+					<div>
+						<div class="card__body card__body--sm">
+							<div class="card__avatar">
+								<img class="img-responsive img-circle" ng-src="{{offer.applicator.trust.profilePicture.filePath.replace('public','')}}" />
+								<img class="img-responsive img-circle" ng-if="!offer.applicator.trust.profilePicture.filePath" src="profile/images/unknown.jpg" />
+							</div>
+							<div class="uk-text-center">
+								<div class="card__title">
+									{{offer.applicator.firstname}} {{offer.applicator.lastname}}
+								</div>
+								<!-- /.card__title -->
+								<div class="card__sub">
+									{{offer.job.profession.title}}
+								</div>
+								<!-- /.card__sub -->
+							</div>
+							<div class="uk-text-center">
+								<div class="progress progress--md" ng-class='{"progress--over": offer.applicator.trust.amount > 62}'>
+									<div class="progress-bar" data-value='{{offer.applicator.trust.amount | numberToPersia}}%' role="progressbar" aria-valuenow="{{ offer.applicator.trust.amount }}" aria-valuemin="0" aria-valuemax="100" style="width:{{offer.applicator.trust.amount}}%"></div>
+								</div>
+								<button type='button' class="u-c--3 u-s--2 uk-button uk-button-link uk-margin-small-top" ng-click="openTrustModal();">جزییات درصد اطمینان</button>
+							</div>
+							<div class="uk-margin-top">
+								<div class="card__info card__info--row">
+									<i class="fa fa-phone fa-fw fa-lg c-info__icon"></i>
+									<div>
+										<div ng-if="offer.applicator.visiblePhone">{{ offer.applicator.mobile | numberToPersia }}</div>
+										<div class="uk-text-muted" ng-if='!offer.applicator.visiblePhone'>شماره مخفی شده</div>
+									</div>
+								</div>
+								<div class="card__info card__info--row">
+									<i class="fa fa-map-marker fa-fw fa-lg c-info__icon"></i>
+									<div>
+										<div ng-if="offer.applicator.visibleAddress && offer.applicator.address">{{offer.applicator.address | numberToPersia}}</div>
+										<div class="uk-text-muted" ng-if="!offer.applicator.visibleAddress && offer.applicator.address">آدرس مخفی شده</div>
+										<div class="uk-text-muted" ng-if="!offer.applicator.address">آدرس تعریف نشده</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!-- /.card__body -->
+					</div>
+					<div>
+						<div class="card__body card__body--sm uk-text-center">
+							<div>
+								<div class="u-c--1 u-b--5 u-s--5">{{ (offer.userProfession.rate) | number:1 | numberToPersia }}</div>
+								<div>
+									<fieldset class="rating2 uk-margin-vertical">
+										<input type="radio" id="star11" name="rating3" value="1" />
+										<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=5" class="full" for="star11"></label>
+										<input type="radio" id="star101" name="rating3" value="1" />
+										<label ng-if="offer.userProfession.rate<5" class="full" for="star101"></label>
+										<input type="radio" id="star21" name="rating3" value="2" />
+										<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=4" class="full" for="star21"></label>
+										<input type="radio" id="star201" name="rating3" value="2" />
+										<label ng-if="offer.userProfession.rate<4" class="full" for="star201"></label>
+										<input type="radio" id="star31" name="rating3" value="3" />
+										<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=3" class="full" for="star31"></label>
+										<input type="radio" id="star301" name="rating3" value="3" />
+										<label ng-if="offer.userProfession.rate<3" class="full" for="star301"></label>
+										<input type="radio" id="star41" name="rating3" value="4" />
+										<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=2" class="full" for="star41"></label>
+										<input type="radio" id="star401" name="rating3" value="4" />
+										<label ng-if="offer.userProfession.rate<2" class="full" for="star401"></label>
+										<input type="radio" id="star51" name="rating3" value="5" />
+										<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=1" class="full" for="star51"></label>
+										<input type="radio" id="star501" name="rating3" value="5" />
+										<label ng-if="offer.userProfession.rate<1" class="full" for="star501"></label>
+									</fieldset>
+								</div>
+								<div class="u-c--3 u-s--2">
+									از {{offer.userProfession.rateCount | numberToPersia}} نظر ثبت شده
+								</div>
+							</div>
+						</div>
+						<!-- /.card__body -->
+					</div>
+				</div>
+
+				<div>
+					<div class="card__heading card__heading--bw">
+						درباره متخصص
+					</div>
+					<div class="card__body card__body--sm">
+						<p class="card__desc uk-margin-remove">
+							{{ offer.userProfession.intro.description | numberToPersia }}
+						</p>
+					</div>
+					<!--<p class="read-more"><a href="#" class="button">Read More</a></p>-->
+				</div>
+				<div>
+					<div class="card__heading card__heading--bw">
+						آلبوم عکس
+					</div>
+					<div>
+						<div class="profile__pics" uk-lightbox="animation: slide" owl-carousel='profilePics'>
+							<div ng-if="offer.userProfession.intro.photo1 != undefined">
+								<a class="profile-pics__item" href="{{offer.userProfession.intro.photo1.replace('public/','')}}">
+									<img ng-src="{{offer.userProfession.intro.photo1.replace('public/','')}}" alt="">
+								</a>
+							</div>
+							<div ng-if="offer.userProfession.intro.photo2 != undefined">
+								<a class="profile-pics__item" href="{{offer.userProfession.intro.photo2.replace('public/','')}}">
+									<img ng-src="{{offer.userProfession.intro.photo2.replace('public/','')}}" alt="">
+								</a>
+							</div>
+							<div ng-if="offer.userProfession.intro.photo3 != undefined">
+								<a class="profile-pics__item" href="{{offer.userProfession.intro.photo3.replace('public/','')}}">
+									<img ng-src="{{offer.userProfession.intro.photo3.replace('public/','')}}" alt="">
+								</a>
+							</div>
+							<div ng-if="offer.userProfession.intro.photo4 != undefined">
+								<a class="profile-pics__item" href="{{offer.userProfession.intro.photo4.replace('public/','')}}">
+									<img ng-src="{{offer.userProfession.intro.photo4.replace('public/','')}}" alt="">
+								</a>
+							</div>
+							<div ng-if="offer.userProfession.intro.photo5 != undefined">
+								<a class="profile-pics__item" href="{{offer.userProfession.intro.photo5.replace('public/','')}}">
+									<img ng-src="{{offer.userProfession.intro.photo5.replace('public/','')}}" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+					<!--<p class="read-more"><a href="#" class="button">Read More</a></p>-->
+				</div>
+				<div>
+					<div class="card__heading card__heading--bw">
+						نظرات مشتریان
+					</div>
+					<div class="card__body card__body--sm profile__rate comments__inner">
+						<div ng-repeat="comment in offer.userProfession.comments" ng-class="{'uk-margin': !$last}" ng-if='comment.text'>
+							<div uk-grid="uk-grid">
+								<div class="uk-width-expand u-h--2 u-s--3">
+									{{comment.customer.firstname}} {{comment.customer.lastname}}
+								</div>
+								<div>
+									<fieldset class="rating2 uk-margin-remove">
+										<input type="radio" id="star1" name="rating2" value="1" />
+										<label style="color: rgb(255,215,0)" ng-if="comment.rate>=5" class="full" for="star1"></label>
+										<input type="radio" id="star10" name="rating2" value="1" />
+										<label ng-if="comment.rate<5" class="full" for="star10"></label>
+										<input type="radio" id="star2" name="rating2" value="2" />
+										<label style="color: rgb(255,215,0)" ng-if="comment.rate>=4" class="full" for="star2"></label>
+										<input type="radio" id="star20" name="rating2" value="2" />
+										<label ng-if="comment.rate<4" class="full" for="star20"></label>
+										<input type="radio" id="star3" name="rating2" value="3" />
+										<label style="color: rgb(255,215,0)" ng-if="comment.rate>=3" class="full" for="star3"></label>
+										<input type="radio" id="star30" name="rating2" value="3" />
+										<label ng-if="comment.rate<3" class="full" for="star30"></label>
+										<input type="radio" id="star4" name="rating2" value="4" />
+										<label style="color: rgb(255,215,0)" ng-if="comment.rate>=2" class="full" for="star4"></label>
+										<input type="radio" id="star40" name="rating2" value="4" />
+										<label ng-if="comment.rate<2" class="full" for="star40"></label>
+										<input type="radio" id="star5" name="rating2" value="5" />
+										<label style="color: rgb(255,215,0)" ng-if="comment.rate>=1" class="full" for="star5"></label>
+										<input type="radio" id="star50" name="rating2" value="5" />
+										<label ng-if="comment.rate<1" class="full" for="star50"></label>
+									</fieldset>
+								</div>
+							</div>
+							<div class="u-c--3 u-s--2">
+								{{comment.text}}
+							</div>
+						</div>
+						<!-- /ng-repeat -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.uk-width-2-5@s -->
+		<div class="uk-width-3-5@s uk-animation-slide-left-small">
+			<div class="card card--footer-btn">
+				<div class="card__body">
+					<div id="messageScroll" class="msg">
+						<div class="msg__item" ng-repeat="message in messages" ng-class="message.from==user_id?'msg__item--right':'msg__item--left'">
+							{{message.text}}
+						</div>
+					</div>
+				</div>
+				<div>
+					<form ng-submit="sendMessage()" class="card__footer">
+						<div class="uk-padding-small uk-flex uk-flex-middle">
+							<input ng-model="pm" type="text" class="uk-input msg__input" placeholder="پیام خود را تایپ کنید">
+							<button ng-disabled="pm =='' || pm ==undefined" type="submit" class="uk-button uk-button-primary msg__btn">ارسال</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="uk-text-center">
+				<button ng-disabled='(offer.status == "accepted" || offer.status == "completed" || offer.status == "rated" || offer.status == "approved")' promise-btn id='confirm-accept' type="button" ng-click='confirmHire()' class="uk-button uk-button-primary uk-width-1-1">استخدام</button>
+				<div class="uk-text-danger uk-margin u-p--1">
+					با کلیک بر روی گزینه استخدام امکان امتیاز دهی و ثبت نظر راجع به متخصص برای شما ایجاد می شود، حتما تا پایان انجام کار توسط متخصص صبر کنید و پس از آن به وی امتیاز دهید.
+				</div>
+			</div>
+			<div class="uk-text-center">
+				<!-- /.uk-text-danger -->
+				<div ng-show="statusCode == 400 || statusCode==405" class="uk-alert-warning" uk-alert="uk-alert">
+					<a class="uk-alert-close" uk-close="uk-close"></a>
+					<p ng-show="statusCode == 400">درخواست ارسال شده ناقص است</p>
+					<p ng-show="statusCode == 405">شما قبلا درخواست داده اید</p>
+					<p ng-show="statusCode != 405 || statusCode !=400">مشکلی رخ داده، مجددا تلاش کنید</p>
+				</div>
+				<div ng-show="statusCode == 200" class="uk-alert-success" uk-alert="uk-alert">
+					<a class="uk-alert-close" uk-close="uk-close"></a>
+					<p>درخواست با موفقیت ارسال شد، در انتظار تایید متخصص</p>
+				</div>
+			</div>
+		</div>
+		<!-- /.uk-width-3-5@s -->
+	</div>
+</div>
+
+<script type="text/ng-template" id='confirm-hire.html'>
+	<div class="modal-header uk-flex uk-flex-middle uk-flex-between">
+		<div class='u-b--7 uk-float-right'>آیا از انتخاب متخصص مطمئن هستید؟</div>
+		<div class="uk-button-group uk-float-left">
+			<button class="uk-button uk-button-default" type="button" ng-click='closeConfirm()'>خیر <span uk-icon="icon: close"></span></button>
+			<button class="uk-button uk-button-primary" type="button" promise-btn ng-click='accept()'>بله <span uk-icon="icon: check"></span></button>
+		</div>
+		<!-- /.uk-button-group -->
+	</div>
+	<!-- /.modal-header -->
+</script>
+
+<script type="text/ng-template" id='trust.html'>
+	<div class="modal-header">
+		<div class="modal__close">
+			<button id="modal__close" type="button" uk-close ng-click='cancel()'></button>
+		</div>
+		<div class="row h4 persian uk-text-center" style="font-weight: normal; padding: 1% 2%; ">موارد درصد اطمینان</div>
+	</div>
+	<div class="modal-body">
+		<div class="container-fluid">
+			<!-- <div class="row" style="height:5px;background-color: rgb(242,242,242); margin: 5% 0;"></div> -->
+			<div class="row">
+				<div class="container-fluid">
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.trust.profilePicture.verified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.trust.profilePicture.verified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.trust.profilePicture.verified,'trustModalNotVerified':!offer.applicator.trust.profilePicture.verified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.trust.profilePicture.verified,'trustModalNotVerified':!offer.applicator.trust.profilePicture.verified}">عکس پروفایل</p>
+						</div>
+					</div>
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.trust.certificate.verified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.trust.certificate.verified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.trust.certificate.verified,'trustModalNotVerified':!offer.applicator.trust.certificate.verified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.trust.certificate.verified,'trustModalNotVerified':!offer.applicator.trust.certificate.verified}">مدرک درسی، کارت دانشجویی و یا مدارک تخصصی</p>
+						</div>
+					</div>
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.mobileVerified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.mobileVerified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.mobileVerified,'trustModalNotVerified':!offer.applicator.mobileVerified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.mobileVerified,'trustModalNotVerified':!offer.applicator.mobileVerified}">شماره موبایل تایید شده</p>
+						</div>
+					</div>
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.trust.idCard.verified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.trust.idCard.verified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.trust.idCard.verified,'trustModalNotVerified':!offer.applicator.trust.idCard.verified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.trust.idCard.verified,'trustModalNotVerified':!offer.applicator.trust.idCard.verified}">آپلود کارت ملی</p>
+						</div>
+					</div>
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.trust.identity.verified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.trust.identity.verified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.trust.identity.verified,'trustModalNotVerified':!offer.applicator.trust.identity.verified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.trust.identity.verified,'trustModalNotVerified':!offer.applicator.trust.identity.verified}">آپلود کارت تایید هویت</p>
+						</div>
+					</div>
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.trust.addressProof.verified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.trust.addressProof.verified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.trust.addressProof.verified,'trustModalNotVerified':!offer.applicator.trust.addressProof.verified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.trust.addressProof.verified,'trustModalNotVerified':!offer.applicator.trust.addressProof.verified}">تایید آدرس</p>
+						</div>
+					</div>
+					<div class="row rowsOfTrust">
+						<div class="col-xs-2 col-xs-pull-left ">
+							<span uk-icon="icon: check" style="color:rgb(55,188,99);" ng-if="offer.applicator.trust.backgroundCheck.verified"></span>
+							<span uk-icon="icon: close" style="color:rgb(203,203,203);" ng-if="!offer.applicator.trust.backgroundCheck.verified"></span>
+						</div>
+						<div class="col-xs-offset-1 col-xs-9" ng-class="{'trustModalVerified':offer.applicator.trust.backgroundCheck.verified,'trustModalNotVerified':!offer.applicator.trust.backgroundCheck.verified}">
+							<p class="uk-text-right persian" ng-class="{'trustModalVerified':offer.applicator.trust.backgroundCheck.verified,'trustModalNotVerified':!offer.applicator.trust.backgroundCheck.verified}">گواهی عدم سوء‌پیشینه</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

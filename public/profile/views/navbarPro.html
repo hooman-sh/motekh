@@ -1,0 +1,68 @@
+<nav id="profile-menu">
+	<ul>
+		<li>
+			<a ui-sref='landing.home'>خانه</a>
+		</li>
+		<li ng-if="isProff=='true'">
+			<a ui-sref="pages.dashboard" ui-sref-active="active">پروفایل من</a>
+		</li>
+		<li ng-if="isProff=='true'">
+			<a class="intro-4 intro--sm" ui-sref="pages.customersReq" ui-sref-active="active">مشتریان</a>
+		</li>
+		<li ng-if="isProff=='true'">
+			<a class="intro-5 intro--sm" ui-sref="pages.requests" ui-sref-active="active">درخواست های ارسال شده</a>
+		</li>
+		<li>
+			<a class="intro-6 intro--sm" ui-sref="pages.projects" ui-sref-active="active">{{isProff ? "پروژه های شخصی" : "پروژه های من"}}</a>
+		</li>
+		<li ng-if="isProff=='true'">
+			<a ui-sref-active="active" ui-sref="pages.help"> راهنما</a>
+		</li>
+		<li>
+			<a ui-sref="pages.setting" ui-sref-active="active"> تنظیمات</a>
+		</li>
+		<li ng-click="exit()">
+			<a href="#"> خروج</a>
+		</li>
+	</ul>
+</nav>
+<nav class="profile__header" uk-navbar id="profile__header">
+	<div class="uk-navbar-right">
+		<div class="nav__opener">
+			<button class="hamburger hamburger--slider" type="button" id='nav__opener'>
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>
+		</div>
+		<!-- /#c-nav--sm -->
+		<ul class="uk-navbar-nav uk-navbar-item c-nav" ng-class="{'proffList':isProff=='true','userList':isProff=='false','uk-flex-right':isProff == 'false'}">
+			<li class="c-nav__item" ng-if="isProff=='true'">
+				<a class="c-nav__link" ui-sref="pages.dashboard" ui-sref-active="c-nav__link--active">پروفایل من</a>
+			</li>
+			<li class="c-nav__item" ng-if="isProff=='true'">
+				<a class="c-nav__link intro-4 intro--lg" ui-sref="pages.customersReq" ui-sref-active="c-nav__link--active">مشتریان</a>
+			</li>
+			<li class="c-nav__item" ng-if="isProff=='true'">
+				<a class="c-nav__link intro-5 intro--lg" ui-sref="pages.requests" ui-sref-active="c-nav__link--active">درخواست های ارسال شده</a>
+			</li>
+			<li class="c-nav__item">
+				<a class="c-nav__link intro-6 intro--lg" ui-sref="pages.projects" ui-sref-active="c-nav__link--active">{{isProff ? "پروژه های شخصی" : "پروژه های من"}}</a>
+			</li>
+			<li class="c-nav__item" ng-if="isProff=='true'">
+				<a class="c-nav__link" ui-sref-active="c-nav__link--active" ui-sref="pages.help"> راهنما</a>
+			</li>
+			<li class="c-nav__item">
+				<a class="c-nav__link" ui-sref="pages.setting" ui-sref-active="c-nav__link--active"> تنظیمات</a>
+			</li>
+			<li class="c-nav__item" ng-click="exit()">
+				<a class="c-nav__link"> خروج</a>
+			</li>
+		</ul>
+	</div>
+	<div class="uk-navbar-left">
+		<a class="uk-logo uk-navbar-item" ui-sref="landing.home">
+				<img alt="جاپ - Jopp" class="img-responsive profile__logo" src="./images/logo-new-white.png">
+			</a>
+	</div>
+</nav>

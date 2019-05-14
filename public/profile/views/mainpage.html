@@ -1,0 +1,426 @@
+<link rel="stylesheet" href="../bower_components/flickity/dist/flickity.min.css">
+<script type="text/javascript" src="../bower_components/flickity/dist/flickity.pkgd.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script>
+  $('.main-carousel').flickity({
+    // options
+    cellAlign: 'left',
+    contain: true,
+    groupCells: true,
+    pageDots: false
+
+  });
+</script>
+
+<script>
+  $('#but').click(function() {
+    $('.carousel').carousel(0);
+  });
+</script>
+
+<style>
+  .carousel-cell {
+    width: 20%; /* full width */
+    height: 160px; /* height of carousel */
+    margin-right: 10px;
+  }
+  ol.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    left: 0;
+    z-index: 15;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+  }
+  .carousel-indicators li {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    max-width: 30px;
+    height: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,.5);
+  }
+  .trans{
+    background-color: rgba(1,1,1,0);
+  }
+  .carousel-indicators .active {
+    margin: 1px;
+    margin-right: 3px;
+    margin-left: 3px;
+    max-width: 30px;
+    height: 3px;
+    background-color: white;
+  }
+  .carousel-control.right{
+    background-image: none;
+  }
+  .carousel-control.left{
+    background-image: none;
+  }
+
+
+
+  .check {
+    width: 30px;
+    height: 30px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  input {
+    display: none;
+
+  }
+  input:checked + .box {
+     background-color: white;
+
+  }
+  input:checked + .box:after {
+     top: 0;
+   }
+  .box {
+    width: 100%;
+    height: 100%;
+    transition: all 1.1s cubic-bezier(.19,1,.22,1);
+    border:2px solid rgb(208, 208, 208);
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+  }
+  .box:after {
+    width: 63%;
+    height: 32%;
+    content: '';
+    position: absolute;
+    border-left: 4.5px solid;
+    border-bottom: 4.5px solid;
+       border-color: #1072b7;
+       transform: rotate(-45deg) translate3d(0,0,0);
+       transform-origin: center center;
+       transition: all 1.1s cubic-bezier(.19,1,.22,1);
+       left: 0;
+       right: 0;
+       top: 200%;
+       bottom: 5%;
+       margin: auto;
+     }
+.backp{
+  background-position: 10%;
+}
+  .modalHead{
+    color: #fffcfc;
+    text-align: center;
+    font-weight: 600;
+    margin: 7%;
+
+  }
+
+  .search-box{
+    display: inline;
+    width: 60%;
+    margin: 0 20%;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 700;
+    position: absolute;
+    left: 0%;
+    top: 75%;
+    z-index: 500;
+    height: 10%;
+  }
+  .btndesign2{
+    z-index: 5;
+    /* margin-top: 9%; */
+    adding: 12px 49px;
+    margin-right: 3%;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #0070ba;
+    font-weight: 700;
+    display: inline-block;
+    width: 8%;
+    height: 71%;
+    line-height: 2;
+
+  }
+  .input-search{
+    display: inline-block;
+    width: 50%;
+    height: 71%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    direction: rtl;
+    padding: 0 2%;
+    font-weight: lighter;
+  }
+  .searchRes{
+    z-index: 5;
+    margin-top: 9%;
+    padding: 12px 49px;
+    outline: none;
+    border: thin solid black;
+    color: black;
+    /* background-color: #0070ba; */
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
+  }
+  .carousel{
+    height: 100vh;
+  }
+  .carousel-inner{
+    height: 100%;
+  }
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img{
+    display: none;
+  }
+
+  .carousel-inner > .item:first-child{
+    height: 100%;
+    background: url("../images/6.jpg");
+    background-size: cover;
+    background-position: 38%;
+  }
+  .carousel-inner > .item:nth-child(2){
+    height: 100%;
+    background: url("../images/2.jpg");
+    background-size: cover;
+    background-position: 66%;
+  }
+  .carousel-inner > .item:nth-child(3){
+    height: 100%;
+    background: url("../images/3.jpg");
+    background-size: cover;
+    background-position: 33%;
+  }
+  .carousel-inner > .item:nth-child(4){
+    height: 100%;
+    background: url("../images/4.jpg");
+    background-size: cover;
+    background-position: 33%;
+  }
+  .carousel-inner > .item:nth-child(5){
+    height: 100%;
+    background: url("../images/5.jpg");
+    background-size: cover;
+    background-position: 71%;
+  }
+  .carousel-inner > .item:nth-child(6){
+    height: 100%;
+    background: url("../images/1.jpg");
+    background-size: cover;
+    background-position: 33%;
+  }
+ </style>
+<body>
+<!--<div class="container-fluid firstsec">-->
+<navbar></navbar>
+
+<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">
+ کار را به متخصص بسپار
+</p>
+<h4   dir="rtl" class="persian mainheadsm font15" style="z-index: 500">از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، ما مناسب ترین فرد را <span style="color: #00b3ee">کاملا رایگان</span> برای ارائه خدمات به شما معرفی می کنیم </h4>
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="false" data-interval="4000" >
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox" >
+    <div class="item active" style="max-height: 79vh">
+      <img src="./images/6.jpg" alt="Flower" class="fullwidth">
+      <!--<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">-->
+      <!--به بزرگترین مرجع متخصصین ایرانی بپیوندید.-->
+      <!--</p>-->
+      <!--<h4 data-aos="zoom-in" data-aos-delay="500" dir="rtl" class="persian mainheadsm font15" >از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، به صورت <span style="color: #00b3ee">رایگان</span> ثبت نام کنید و کار بگیرید </h4>-->
+      <!--<button class="btn btndesign persian aligncenter" ui-sref="signup">ثبت نام</button>-->
+    </div>
+
+    <div class="item" style="max-height: 79vh">
+      <img src="./images/2.jpg" alt="Chania" class="fullwidth">
+      <!--<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">-->
+        <!--به بزرگترین مرجع متخصصین ایرانی بپیوندید.-->
+      <!--</p>-->
+      <!--<h4 data-aos="zoom-in" data-aos-delay="500" dir="rtl" class="persian mainheadsm font15" >از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، به صورت <span style="color: #00b3ee">رایگان</span> ثبت نام کنید و کار بگیرید </h4>-->
+      <!--<button class="btn btndesign persian aligncenter" ui-sref="signup">ثبت نام</button>-->
+    </div>
+
+    <div class="item" style="max-height: 79vh">
+      <img src="./images/3.jpg" alt="Flower" class="fullwidth">
+      <!--<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">-->
+        <!--به بزرگترین مرجع متخصصین ایرانی بپیوندید.-->
+      <!--</p>-->
+      <!--<h4 data-aos="zoom-in" data-aos-delay="500" dir="rtl" class="persian mainheadsm font15" >از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، به صورت <span style="color: #00b3ee">رایگان</span> ثبت نام کنید و کار بگیرید </h4>-->
+      <!--<button class="btn btndesign persian aligncenter" ui-sref="signup">ثبت نام</button>-->
+    </div>
+
+    <div class="item" style="max-height: 79vh">
+      <img src="./images/4.jpg" alt="Flower" class="fullwidth">
+      <!--<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">-->
+        <!--به بزرگترین مرجع متخصصین ایرانی بپیوندید.-->
+      <!--</p>-->
+      <!--<h4 data-aos="zoom-in" data-aos-delay="500" dir="rtl" class="persian mainheadsm font15" >از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، به صورت <span style="color: #00b3ee">رایگان</span> ثبت نام کنید و کار بگیرید </h4>-->
+      <!--<button class="btn btndesign persian aligncenter" ui-sref="signup">ثبت نام</button>-->
+    </div>
+    <div class="item" style="max-height: 79vh">
+      <img src="./images/5.jpg" alt="Flower" class="fullwidth">
+      <!--<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">-->
+      <!--به بزرگترین مرجع متخصصین ایرانی بپیوندید.-->
+      <!--</p>-->
+      <!--<h4 data-aos="zoom-in" data-aos-delay="500" dir="rtl" class="persian mainheadsm font15" >از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، به صورت <span style="color: #00b3ee">رایگان</span> ثبت نام کنید و کار بگیرید </h4>-->
+      <!--<button class="btn btndesign persian aligncenter" ui-sref="signup">ثبت نام</button>-->
+    </div>
+
+    <div class="item" style="max-height: 79vh">
+      <!--<p data-aos="zoom-in" data-aos-delay="0" dir="rtl" class="mainhead persian center-block">-->
+      <!--به بزرگترین مرجع متخصصین ایرانی بپیوندید.-->
+      <!--</p>-->
+      <!--<h4 data-aos="zoom-in" data-aos-delay="500" dir="rtl" class="persian mainheadsm font15">از مدرس زبان و برنامه نویس تا مربی بدنسازی و نقاش ساختمان، به صورت <span style="color: #00b3ee">رایگان</span> ثبت نام کنید و کار بگیرید </h4>-->
+
+      <img src="./images/1.jpg" alt="Chania" class="fullwidth">
+    </div>
+      <div class="row" style="background: black; opacity: 0.6;">
+        <img style="opacity:1;" src="../images/category_icons.png" class="img-responsive">
+      </div>
+    <div class="row">
+      <input type="text" placeholder="akjsdhkjahslk">
+    </div>
+
+  </div>
+
+  <!-- Left and right controls -->
+
+</div>
+
+
+<div class="container-fluid visible-md visible-lg" id="how">
+  <div class="row pad220" style="margin-bottom: 8%;">
+    <h3 class="persian fontweight2 titrfont" style="text-align: center;" >چگونه کار می کند؟</h3>
+    <div data-aos="zoom-in" data-aos-delay="500" class="col-md-4 col-xs-12 col-sm-12 margintop2 icons" id="three">
+      <div class="thumbnail">
+
+        <img src="./images/icontick.png" class="img-circle img-thumbnail" style="max-width: 122px;; margin-bottom: 30px;">
+        <h4 class="text-center persian fontsizee fontweight2 alignIconhead ">استخدام</h4>
+        <p class="persian align wight400">        استخدام شوید و شانس خود را برای کارهای آتی افزایش دهید
+        </p>
+      </div>
+    </div>
+
+    <div data-aos="zoom-in" data-aos-delay="1000" class="col-md-4 col-xs-12 col-sm-12  margintop2 icons " id="two">
+      <div class="thumbnail">
+
+        <img src="./images/icon$.png" class="img-circle img-thumbnail" style="max-width: 122px;; margin-bottom: 30px;">
+        <h4 class="text-center persian fontsizee fontweight2 alignIconhead ">قیمت دهی</h4>
+        <p class="persian align wight400" dir="rtl">بر اساس خواسته مشتریان قیمت پیشنهادی خود را اعلام کنید.</p>
+      </div>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="1500" class="col-md-4 col-xs-12 col-sm-12 margintop2 " id="one">
+      <div class="thumbnail">
+
+        <img src="./images/iconmenu.png" class="img-circle img-thumbnail icons" style="max-width:122px;; margin-bottom: 30px;">
+        <h4 class="text-center persian fontsizee fontweight2 alignIconhead ">بررسی</h4>
+        <p class="persian align wight400">لیست کامل مشتریان و خواسته دقیق آن ها را بررسی کنید</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid visible-sm visible-xs" id="how">
+  <div class="row pad220" style="margin-bottom: 8%;">
+    <h3 class="persian fontweight2 titrfont" style="text-align: center;" >چگونه کار می کند؟</h3>
+    <div data-aos="zoom-in" data-aos-delay="1500" class="col-md-4 col-xs-12 col-sm-12 margintop2 one">
+      <div class="thumbnail">
+
+        <img src="./images/iconmenu.png" class="img-circle img-thumbnail icons" style="max-width:122px;; margin-bottom: 30px;">
+        <h4 class="text-center persian fontsizee fontweight2 alignIconhead ">بررسی</h4>
+        <p class="persian align wight400">لیست کامل مشتریان و خواسته دقیق آن ها را بررسی کنید</p>
+      </div>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="1000" class="col-md-4 col-xs-12 col-sm-12  margintop2 icons two">
+      <div class="thumbnail">
+
+        <img src="./images/icon$.png" class="img-circle img-thumbnail" style="max-width: 122px;; margin-bottom: 30px;">
+        <h4 class="text-center persian fontsizee fontweight2 alignIconhead ">قیمت دهی</h4>
+        <p class="persian align wight400" dir="rtl">بر اساس خواسته مشتریان قیمت پیشنهادی خود را اعلام کنید.</p>
+      </div>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="500" class="col-md-4 col-xs-12 col-sm-12 margintop2 icons three">
+      <div class="thumbnail">
+
+        <img src="./images/icontick.png" class="img-circle img-thumbnail" style="max-width: 122px;; margin-bottom: 30px;">
+        <h4 class="text-center persian fontsizee fontweight2 alignIconhead ">استخدام</h4>
+        <p class="persian align wight400">        استخدام شوید و شانس خود را برای کارهای آتی افزایش دهید
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container-fluid" id="why">
+  <div class="row backbluegradient rowdes"  >
+    <div class="col-md-5">
+      <img src="./images/mobile.png" alt="logoman" class="img-responsive imgDes2 visible-md visible-lg"/>
+    </div>
+    <div class="col-md-offset-4 col-md-8">
+    <div class="col-md-6 col-xs-12">
+
+      <li role="presentation" class="list-group-item limargin"><img data-aos="zoom-in" data-aos-delay="2000" class="img-responsive imgdes " src="./images/check.png"><h4 class="persian fontweight fontweight2 margin4 fontwhite fontlist lineheightm" style="text-align: right; ">دسترسی کامل به تمامی پروژه ها</h4> </li>
+      <li role="presentation" class="list-group-item limargin "><img data-aos="zoom-in" data-aos-delay="2500" class="img-responsive imgdes" src="./images/check.png"><h4 class="persian fontweight fontweight2 margin4 fontwhite fontlist lineheightm" style="text-align: right; ">ارزیابی عملکرد و رتبه بندی متخصصین</h4> </li>
+      <li role="presentation" class="list-group-item limargin"><img data-aos="zoom-in" data-aos-delay="3000" class="img-responsive imgdes" src="./images/check.png"><h4 class="persian fontweight fontweight2 margin4 fontwhite fontlist lineheightm" style="text-align: right">قیمت دهی براساس خواسته دقیق مشتری</h4> </li>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <ul class="list-group">
+        <li role="presentation" class="list-group-item limargin"><img data-aos="zoom-in" data-aos-delay="500" class="img-responsive imgdes" src="./images/check.png"><h4 class="persian fontweight fontweight2 margin4 fontwhite fontlist lineheightm" style="text-align: right">بدون گرفتن کمیسیون</h4> </li>
+        <li role="presentation" class="list-group-item limargin"><img data-aos="zoom-in" data-aos-delay="1000" class="img-responsive imgdes" src="./images/check.png"><h4 class="persian fontweight fontweight2 margin4 fontwhite fontlist lineheightm" style="text-align: right">انتخاب مشتری مناسب با شرایط شما</h4> </li>
+        <li role="presentation" class="list-group-item limargin"><img data-aos="zoom-in" data-aos-delay="1500" class="img-responsive imgdes" src="./images/check.png"><h4 class="persian fontweight fontweight2 margin4 fontwhite fontlist lineheightm" style="text-align: right">ارتباط مستقیم و بدون واسطه با مشتریان</h4> </li>
+      </ul>
+    </div>
+    </div>
+    <div class="row" style="margin-top: 2%;     margin-bottom: 19px;">
+      <div class="col-md-offset-2 col-md-3 col-xs-12">
+      </div>
+      <div class="col-md-3 col-xs-12">
+        <a href=""><img src="./images/apple.png" class="dlimg" style="max-width: 131px; margin-top: 12%;"></a>
+        <a href=""><img src="./images/google.png" class="dlimg downloadlink" style="max-width: 131px; margin-top: 12%;"></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<pagefooter></pagefooter>
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery('.tp-banner').revolution(
+      {
+        delay:0000,
+        startwidth:1170,
+        startheight:500,
+        hideThumbs:10
+      });
+  });
+</script>
+</body>

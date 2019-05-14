@@ -1,0 +1,188 @@
+.modal-gradiant{
+  background: white;
+}
+.header-color{
+  background-color: white;
+}
+.sample-show-hide {
+  transition: all linear 0.5s;
+}
+.sample-show-hide.ng-hide {
+  opacity: 0;
+}
+
+/*@font-face {
+  font-family: IRANSans;
+  src: url(fonts/iransans/IRANSans-UltraLight-web.eot);
+  src: url(fonts/iransans/IRANSans-UltraLight-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-UltraLight-web.woff) format("woff"), url(../fonts/iransans/IRANSans-UltraLight-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-UltraLight-web.woff) format("svg");
+  font-weight: 100
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(fonts/iransans/IRANSans-Light-web.eot);
+  src: url(fonts/iransans/IRANSans-Light-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-Light-web.woff) format("woff"), url(../fonts/iransans/IRANSans-Light-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-Light-web.woff) format("svg");
+  font-weight: 400
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(fonts/iransans/IRANSans-Medium-web.eot);
+  src: url(fonts/iransans/IRANSans-Medium-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-Medium-web.woff) format("woff"), url(../fonts/iransans/IRANSans-Medium-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-Medium-web.woff) format("svg");
+  font-weight: 600
+}
+@font-face {
+  font-family: IRANSans;
+  src: url(fonts/iransans/IRANSans-Bold-web.eot);
+  src: url(fonts/iransans/IRANSans-Bold-web.eot?#iefix) format("embedded-opentype"), url(../fonts/iransans/IRANSans-Bold-web.woff) format("woff"), url(../fonts/iransans/IRANSans-Bold-web.ttf) format("truetype"), url(../fonts/iransans/IRANSans-Bold-web.woff) format("svg");
+  font-weight: 700
+}*/
+
+.persian {
+  font-family: IRANSans;
+}
+
+.border-bott{
+  padding-bottom: 2%;border-bottom: thin solid lightgray;
+}
+button:focus {outline:0;}
+fieldset, label { margin: 0; padding: 0; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+.padding-left-0{
+  padding-left: 0;
+}
+.yellow-color{
+  color: #FFED85;
+}
+.modal-footer-gray{
+  border: none;background: rgba(211, 211, 211, 0.41);
+}
+
+<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" ng-class="{'modal-gradiant':!started}">
+      <div class="modal-header" style="border: none;" ng-class="{'header-color':started}" >
+        <div style="margin-top: 4%" ng-show="started" class="col-xs-10 col-xs-offset-1">
+          <div class="progress" style="    height: 21px;
+     margin-bottom: 0px;
+    border-radius: 16px;">
+            <div   class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width:{{(curr+1)*(100/questions.length)}}%;line-height: 20px; float: left; background-color: rgb(55, 188, 101);">
+            </div>
+          </div>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img class="center-block" ng-show="!started" src="../images/logo.png" alt="First slide" style="max-width: 250px">
+        <div class="col-xs-10 col-xs-offset-1 h4 persian modalHead" dir="rtl" ng-show="started" style="padding: 2% 2%;text-align: center;color: black;line-height: 30px;" >{{head}}</div>
+      </div>
+      <div class="modal-body">
+        <div id="createJob" class="carousel slide" data-ride="carousel" data-interval="false" >
+
+          <div class="carousel-inner" role="listbox">
+            <div class="item " ng-class="{'active':curr==-1}" style="padding: 81px">
+              <p class="persian pWp" style="  color: black;font-size: 28px;text-align: center;font-weight: 400;">برای آنکه بتوانیم بهترین افراد متخصص را به شما معرفی کنیم، ابتدا نیاز هست که به چند سوال کوتاه پاسخ دهید </p>
+            </div>
+            <div class="item" ng-repeat="(qindex,q) in questions2">
+              <div class="row">
+                <div class="col-xs-12" ng-repeat="opt in q.options"   ng-class="{'border-bott':((q.type!='mtext'||q.type!='stext')&&($index != q.options.length-1))||(q.type=='mtext'||q.type=='stext')}" style="margin-bottom: 4%; ">
+                  <label ng-if="q.type == ('multi')" class="check pull-right" style="    padding-right: 1%;">
+                    <input ng-click="checkAnswers(opt,q._id,q.type,qindex)" type="checkbox">
+                  </label>
+                  <label ng-if="q.type == ('mtext')" class="check pull-right" style="    padding-right: 1%;">
+                    <input ng-click="checkAnswers(opt,q._id,q.type,qindex)" ng-if="q.type=='mtext'"  type="checkbox">
+                  </label>
+                  <label ng-if="q.type == ('single') " class="check pull-right" style="padding-right: 1%;">
+                    <input name="questions{{qindex}}" ng-click="checkAnswers(opt,q._id,q.type,qindex)"  type="radio">
+                  </label>
+                  <label ng-if="q.type == ('stext')" class="check pull-right" style="padding-right: 1%;">
+                    <input name="questions{{qindex}}" ng-click="checkAnswers(opt,q._id,q.type,qindex)" ng-if="q.type=='stext' "  type="radio">
+                  </label>
+                  <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">{{opt}}</span>
+                </div>
+                <div class="col-xs-12" ng-if="q.type == ('mtext') || q.type == ('stext')"   style="margin-bottom: 4%; ">
+                  <label ng-if="q.type == ('mtext')" class="check pull-right" style="    padding-right: 1%;">
+                    <input ng-click="checkAnswers('none',q._id,q.type,qindex)"   type="checkbox">
+                  </label>
+                  <label ng-if="q.type == ('stext') " class="check pull-right" style="padding-right: 1%;">
+                    <input name="questions{{qindex}}" ng-click="checkAnswers('none',q._id,q.type,qindex)"   type="radio">
+                  </label>
+                  <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">{{q.textOption}}</span>
+                </div>
+                <div ng-show="showTextOp[qindex]" class="persian sample-show-hide col-xs-12 form-group">
+                  <input  id="stextInp" class="persian form-control" ng-model="textOpt[qindex]" style="direction: rtl;text-align: right;padding: 1%;border: thin solid rgb(16, 114, 183)">
+                </div>
+              </div>
+            </div>
+            <div  class="item" id="Time">
+              <div class="col-xs-12 border-bott"  style="margin-bottom: 4%; ">
+                <label class="check pull-right" style="padding-right: 1%;">
+                  <input name="questionsTime" ng-click="checkAnswers('هرچه زودتر','time','stext',curr)" type="radio">
+                </label>
+                <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">هرچه زودتر</span>
+              </div>
+              <div class="col-xs-12 border-bott"  style="margin-bottom: 4%; ">
+                <label class="check pull-right" style="padding-right: 1%;">
+                  <input name="questionsTime" ng-click="checkAnswers('طی چند روز','time','stext',curr)"   type="radio">
+                </label>
+                <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">طی چند روز</span>
+              </div>
+              <div class="col-xs-12 "  style="margin-bottom: 4%; ">
+                <label class="check pull-right" style="padding-right: 1%;">
+                  <input name="questionsTime" ng-click="checkAnswers('none','time','stext',curr)"   type="radio">
+                </label>
+                <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">در یک تاریخ خاص</span>
+              </div>
+              <div ng-show="showTextOp[curr]" class="persian sample-show-hide  form-group" style="    margin-left: auto;margin-right: auto;width: 35%;">
+                <input  class="inline-example persian form-control" ng-model="textOpt[curr]" style="direction: rtl;text-align: right;padding: 1%;border: thin solid rgb(16, 114, 183)">
+              </div>
+            </div>
+            <div  class="item">
+              <div  class="persian sample-show-hide col-xs-12 form-group" style=" margin-left: auto;margin-right: auto;">
+                <input  class=" persian form-control" ng-model="textOpt[curr]" style="direction: rtl;text-align: right;padding: 1%;border: thin solid rgb(16, 114, 183)">
+              </div>
+            </div>
+            <div  class="item">
+              <div  class="persian sample-show-hide col-xs-12 form-group" style=" margin-left: auto;margin-right: auto;">
+                <input  class=" persian form-control" ng-model="textOpt[curr]" style="direction: rtl;text-align: right;padding: 1%;border: thin solid rgb(16, 114, 183)">
+              </div>
+            </div>
+            <div  class="item" id="Phone">
+              <div class="col-xs-12 border-bott"  style="margin-bottom: 4%; ">
+                <label class="check pull-right" style="padding-right: 1%;">
+                  <input name="questionsPhone" ng-click="checkAnswers('خیر','phone','stext',curr)" type="radio">
+                </label>
+                <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">خیر</span>
+              </div>
+              <div class="col-xs-12 "  style="margin-bottom: 4%; ">
+                <label class="check pull-right" style="padding-right: 1%;">
+                  <input name="questionsPhone" ng-click="checkAnswers('none','phone','stext',curr)"   type="radio">
+                </label>
+                <span class="persian pull-right" dir="rtl" style="display: inline;margin-right: 4%;font-size: 16px; margin-top:1%">بله</span>
+              </div>
+              <div ng-show="showTextOp[curr]" class="persian sample-show-hide  form-group" style="    margin-left: auto;margin-right: auto;width: 35%;">
+                <input  class="persian form-control" ng-model="textOpt[curr]" style="direction: rtl;text-align: right;padding: 1%;border: thin solid rgb(16, 114, 183)">
+                </div>
+              <button promise-btn  ng-disabled="(createJob.answers[questions[curr]._id].selected_options.length==0)&&(textOpt[curr]=='')"  type="button" class="btn btn-primary center-block right persian"  ng-click="sendAnswers()" style="    background-color: white;color: black;padding: 13px 51px;border-radius: 15px;">ارسال</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer " style="border: none;"  ng-class="{'modal-footer-gray':started}">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <button type="button" class="btn modal-button center-block right persian" ng-show="!started" ng-click="start()" data-target="#createJob" data-slide="next" >شروع</button>
+        <div class="row" ng-show="started">
+          <!--<button class="btn btn-default right " href="#carouselExampleIndicators" data-slide="next">next</button>-->
+          <!--<button class="btn btn-default left " href="#carouselExampleIndicators" data-slide="prev">next</button>-->
+          <button  class="left pull-left left-carousel-control"  ng-click="prevHead()" style="margin-left: 2%; background: none;border: none;">
+            <span class="glyphicon glyphicon-chevron-left" style="color: #1072b7; font-size: 30px"></span>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button  class="right pull-right right-carousel-control"  ng-click="nextHead()" style="margin-right: 2%; background: none;border: none;">
+            <span class="glyphicon glyphicon-chevron-right" style="color: #1072b7; font-size: 30px"></span>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{
+	"plugins": [
+		"import-glob",
+		"angularjs-annotate"
+	],
+	"presets": [
+		"es2015"
+	]
+}

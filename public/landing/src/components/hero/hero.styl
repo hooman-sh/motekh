@@ -1,0 +1,167 @@
+@import '../../styles/variables'
+
+.hero
+	position relative
+	height $heroHeight
+
+	&--contact
+	&--about
+		height $heroContactHeight
+		overflow hidden
+
+		& ^[0]__back
+			animation-iteration-count infinite
+			animation-direction alternate
+
+		& ^[0]__front
+			height 100%
+
+		& ^[0]__content
+			margin-top 0
+
+	// Background Slider
+	&__back
+		position absolute !important
+
+		overflow hidden
+
+		top 0
+		left 0
+		right 0
+		bottom 0
+
+		background-size cover
+		background-repeat no-repeat
+		background-position center center
+
+		z-index 2
+
+		^[0]--contact &
+			background-image url('/landing/assets/images/contact/hero.jpg')
+
+		^[0]--about &
+			background-image url('/landing/assets/images/about/hero.jpg')
+
+		/ .proficients__hero &
+			background-repeat repeat
+			background-size 200px
+
+		/ .proficients__hero--1 &
+			background-image url('/landing/assets/images/proficients/1.svg')
+
+
+	// Hero Content
+	&__front
+		display flex
+		flex-direction column
+		justify-content center
+		align-items center
+
+		position relative
+		height $heroHeight
+
+		@media (min-width $lg + 1)
+			padding-top 7rem
+
+	&__content
+		display flex
+		flex-direction column
+		justify-content center
+		align-items center
+
+		position relative
+		z-index 30
+
+		^[0]--about &
+		^[0]--contact &
+			margin-top 2rem
+
+	// Hero Text
+	&__text
+		margin-left 5rem
+		margin-right 5rem
+
+		color #fff
+		text-align center
+
+		line-height 2
+
+		user-select none
+
+		text-shadow 0 0 3px rgba(0,0,0,.8), 0 0 12px rgba(0,0,0,.3)
+
+		^[0]--proficients &
+			text-shadow 0 0 0
+
+		^[0]--home &
+			margin-bottom 2rem
+
+	// @title
+	&__title
+		font-size 2.2rem
+		font-weight 900
+		line-height 1.7
+
+		color #fff
+		margin-bottom 2rem
+
+		&:only-child
+			margin-bottom 0
+
+	&__sub
+		font-size 1rem
+		font-weight 900
+
+		color #fff
+
+		&--blue
+			color $color
+			text-shadow 0 0 3px alpha($color, .6), 0 0 12px alpha($color, .2)
+
+	@media (orientation: portrait) and (min-width $sm), (orientation: portrait) and (min-height: $sm)
+		&
+		&__front
+		/.slider--hero .slider__item
+			max-height 47rem
+
+	@media (max-width $sm - 1)
+		&--home &__front
+			display block
+
+			@media (min-height 450px)
+				padding-top 55%
+
+			@media (orientation landscape)
+				padding-top 6rem
+
+		&--home &__content
+			display block
+			text-align center
+
+		&__text
+			margin 0 2rem 2.5rem
+
+	@media (orientation: landscape) and (max-width $md)
+		&__content
+			margin-top 0
+
+		&__text
+			margin 0 1rem 1rem
+
+
+	&--proficients
+		&
+		& .hero__front
+			height auto
+
+		& .hero__front
+			padding-top 10rem
+			padding-bottom 6rem
+
+		.hero__sub
+			margin-bottom 1.5rem
+
+			// @media (min-width $md)
+			// 	padding-left 2rem
+			// 	padding-right 2rem
+			// 	padding-bottom 1.5rem

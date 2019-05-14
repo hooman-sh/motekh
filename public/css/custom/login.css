@@ -1,0 +1,369 @@
+body {
+    font-family: IRANSans;
+    background-color: #f5f5f5;
+}
+
+/*navbar*/
+.navbar-default {
+    background-color: #555;
+    border-color: #555;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand > img {
+    height: 100%;
+    padding: 4px !important;
+    width: auto;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #aaaaaa;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #999999;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ddd;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #555;
+}
+
+ul.dropdown-menu li {
+    text-align: right;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.navbar-brand > img {
+    height: 100%;
+    padding: 15px;
+    width: auto;
+}
+
+/*body*/
+body {
+    color: #555;
+}
+
+/*general*/
+dt, dd {
+    margin: 0;
+    padding: 0;
+}
+
+dt {
+    padding-top: 10px;
+}
+
+/*panel*/
+.panel-default > .panel-heading {
+    background-color: #dcdcdc;
+}
+
+.panel-heading {
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: initial;
+    border-top-right-radius: initial;
+    text-align: -webkit-center;
+}
+
+/*paragraph*/
+p {
+    text-align: justify;
+    font-weight: 300;
+}
+
+/*image*/
+.user-image-100-100 {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+    border-radius: 50%;
+}
+
+.user-profile-image {
+    position: absolute;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+
+    /* For the following settings we set 100%, but it can be higher if needed
+    See the answer's update */
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+}
+
+/*progress bar*/
+.progress {
+    width: 85%;
+}
+
+/*right side bar*/
+
+.user-hint {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.user-fullname {
+    font-size: x-large;
+}
+
+.user-job {
+    color: gray;
+    font-size: larger;
+}
+
+.side-col {
+    font-weight: 300;
+    text-align: -webkit-center;
+}
+
+/*icon*/
+.icon-large i {
+    padding-top: 5px;
+    font-size: large;
+}
+
+.icon-x-large i {
+    /*padding-top: 8px;*/
+    font-size: x-large;
+}
+
+.icon-medium i {
+    font-size: medium;
+}
+
+.icon-large,
+.icon-x-large,
+.icon-medium {
+    direction: ltr;
+}
+
+.user-rate-counts {
+    font-weight: bolder;
+    padding-top: 15px;
+}
+
+.user-average-rate-big-num {
+    font-size: 55px;
+    font-weight: 600;
+}
+
+.user-intro-video {
+    padding: 0;
+    margin: 0;
+}
+
+.skill {
+    color: #fff;
+    font-size: small;
+    background-color: #337ab7;
+    padding: 3px 7px;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.date {
+    color: #888;
+    padding: 0;
+    margin: 0;
+}
+
+.customer-name {
+    padding: 0;
+    margin: 0;
+}
+
+.comment-text {
+    font-weight: 300;
+    color: #666;
+}
+
+ul.comments-list {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.block {
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.profile-img-80-80 {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+a:hover,
+a:active,
+a:visited,
+a:focus {
+    text-decoration: none;
+}
+
+.user-social-links a i {
+    font-size: x-large;
+    padding: 3% 0;
+    display: block;
+}
+
+th, td {
+    text-align: -webkit-center;
+}
+
+td {
+    font-weight: 300;
+    font-size: medium;
+}
+
+th {
+    font-weight: 500;
+    font-size: larger;
+}
+
+#panel-my-default-setting {
+    text-align: -webkit-center;
+    font-weight: 300;
+    font-size: x-large;
+    color: white;
+    background-color: skyblue !important;
+}
+
+.big-num {
+    font-size: -webkit-xxx-large;
+    font-weight: 400;
+    color: #337ab7;
+}
+
+.head-title {
+    vertical-align: middle;
+    font-size: xx-large;
+    color: #000;
+    padding-right: 2%;
+}
+
+.description-text {
+    font-size: large;
+    font-weight: 200;
+}
+
+.big-icon {
+    vertical-align: middle;
+    font-size: -webkit-xxx-large;
+    color: #fd8429;
+    padding-left: 2%;
+}
+
+.col-tight {
+    padding: 5% 15%;
+}
+
+ul.list-group {
+    padding-right: 0;
+}
+
+img {
+    width: 90%;
+    height: 90%;
+}
+
+.image-container {
+    text-align: -webkit-center;
+    padding: 2% 3%;
+}
+
+ul.list-group li:nth-child(2n) {
+    background: #fcfcfc;
+}
+
+hr {
+    border-top: 2px solid #808080;
+}
+
+form {
+    width: 100%;
+}
+
+.btn-sign-up,
+.btn-sign-up:hover,
+.btn-default:active,
+.btn-default:focus,
+.btn-default:active,
+.btn-default:visited {
+    width: 100%;
+    margin-top: 3%;
+    font-size: initial;
+    font-weight: 200;
+    background-color: #337ab7;
+    color: white;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.well-signup {
+    background: powderblue;
+    margin-top: 30%;
+    border-color: #337ab7;
+    border-radius: 7px;
+}
+
+.form-heading {
+    padding-bottom: 5%;
+    font-size: xx-large;
+    font-weight: 200;
+    text-align: -webkit-center;
+}
+
+.password-reset {
+    padding-top: 3%;
+    padding-bottom: 2%;
+    font-size: initial;
+    font-weight: 100;
+    text-align: -webkit-center;
+}

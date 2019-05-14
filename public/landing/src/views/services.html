@@ -1,0 +1,34 @@
+<main class='services container-fluid' du-scroll-container>
+
+	<div class="row">
+
+		<div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0" id="services">
+
+			<div class="services__row" ng-repeat='ServiceGroup in $root.$services' services='Ctrl.loaded()' id='{{ ServiceGroup._id }}'>
+				<div class="row">
+					<div class="col-12">
+						<h2 class='services__heading'>{{ ServiceGroup.category }}</h2>
+					</div>
+					<!-- /.col-12 -->
+				</div>
+				<!-- /.row -->
+				<div uk-grid>
+					<div class="uk-width-1-3@m uk-margin-remove" ng-repeat='Service in ServiceGroup.professions'>
+						<div class="services__item">
+							<button class='services__link' ng-click='get_questions(Service._id)'>{{ Service.title }}</button>
+						</div>
+						<!-- /.services__item -->
+					</div>
+					<!-- /.col-md-4 col-sm-6 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.col-lg-10 col-lg-offset-1 -->
+
+	</div>
+	<!-- /.row -->
+
+</main>

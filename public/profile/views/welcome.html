@@ -1,0 +1,130 @@
+<div style=" height: 100%; width:100%;" id="carousel-example-generic" class="carousel slide" data-ride="carousel" ng-controller='dashboard as ctrl'>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div style="height: 100%;" class="carousel-inner" role="listbox">
+    <div style="height: 100%;" class="item active">
+      <div style="    margin-top: 2%;" class="row">
+        <img alt="brand" class=" img-responsive logo-size" src="../images/logo-new-blue-black.png" style=" color: blue; margin:auto;">
+      </div>
+      <div style="margin-top:10%; text-align: center; font-weight: normal; " class="h2 persian row">
+        خوش آمدید
+      </div>
+      <div style="margin-top:10%; line-height: 40px;  text-align: center; font-weight: normal; " class="welcome-mobile-font h4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 row persian">
+        به مناسبت افتتاح وبسایت جاپ و آشنایی بهتر شما با نحوه کار، تمامی خدمات وبسایت ما به مدت ۳ ماه کاملا رایگان می باشد.
+      </div>
+    </div>
+    <div style="height: 100%;" class="item">
+      <div class="container-fluid">
+        <div class="h2 persian row" style="margin: 3% 0%; text-align: center; border-bottom: solid 2px lightgrey; padding-bottom: 3%; font-weight: normal">
+          آپلود عکس
+        </div>
+        <div class="row">
+          <div style="margin-top:2%; line-height: 40px;  text-align: center; font-weight: normal; " class="welcome-mobile-font h4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1   persian">
+            از خودتان یک عکس مناسب بگذارید تا علاوه بر افزایش درصد اطمینان خود باعث متمایز شدن پروفایل شما نسبت به سایرین شود
+          </div>
+        </div>
+        <div class="row ">
+          <div class="row">
+            <img style="margin: auto;max-width: 20%;max-height: 20%;" class="img-responsive img-circle" src="../images/unknown.png">
+          </div>
+          <!-- <p class="h3 persian" style="text-align: center;font-weight:normal">آپلود</p> -->
+        </div>
+      </div>
+    </div>
+    <div style="height: 100%;" class="item">
+      <div class="container-fluid">
+        <div class="h2 persian row" style="margin: 3% 0%; text-align: center; border-bottom: solid 2px lightgrey; padding-bottom: 3%; font-weight: normal">
+          درصد اطمینان
+        </div>
+        <div class="row">
+          <div style="margin-top:7%; line-height: 30px;  text-align: center; font-weight: normal; " class="welcome-mobile-font h4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1   persian">
+            درصد اطمینان درواقع هسته اصلی تایید هویت و اطلاعات شما برای مشتری می باشد، به هر میزان که درصد شما بیشتر باشد ما به مشتری اطمینان می دهیم که اطلاعات شما صحیح و تایید شده است. شما می توانید با ورود به صفحه پروفایل من و کلیک بر روی گزینه افزایش درصد اطمینان
+            اقدامات لازم برای افزایش درصد خود را مشاهده نمایید
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 100%;" class="item">
+      <div class="container-fluid">
+        <div class="h2 persian row" style="margin: 3% 0%; text-align: center; border-bottom: solid 2px lightgrey; padding-bottom: 3%; font-weight: normal">
+          اضافه کردن تخصص
+        </div>
+        <div class="row">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="h4 persian col-xs-12" style="float: right; direction: rtl; text-align: right; padding-right: 10%;">تخصص شما: </div>
+              <div ng-repeat="prof in user.professions" class="welcome-mobile-font h4 persian col-xs-12"  style="float: right; direction: rtl; text-align: right; padding-right: 10%;color: #00AFF0; ">{{prof.profession.title}}</div>
+            </div>
+            <!-- <div class="row">
+          <span class=" glyphicon glyphicon-plus col-xs-1 col-xs-offset-9" style="color: #00AFF0; margin-top: 2%;"></span>
+          <div class=" clearfix h3 persian col-xs-2"  style=" direction: rtl; text-align: right; padding-right: 10%; color: #00AFF0; margin-top: 2%;">TRX</div>
+        </div>
+        <div class="row">
+          <span class=" glyphicon glyphicon-plus col-xs-1 col-xs-offset-9" style="color: #00AFF0; margin-top: 2%;"></span>
+          <div class=" clearfix h3 persian col-xs-2"  style=" direction: rtl; text-align: right; padding-right: 10%; color: #00AFF0; margin-top: 2%;">یوگا</div>
+        </div>
+        <div class="row">
+          <span class=" glyphicon glyphicon-plus col-xs-1 col-xs-offset-9" style="color: #00AFF0; margin-top: 2%;"></span>
+          <div class=" clearfix h3 persian col-xs-2"  style=" direction: rtl; text-align: right; padding-right: 10%; color: #00AFF0; margin-top: 2%;">زومبا</div>
+        </div> -->
+            <div class="row  mar2">
+              <div class="col-md-6 col-xs-12 mar2 pull-right setting-experts">
+                <select ng-model="proffName" ng-options="job.title group by job.tags for job in jobs" id="myinput3" type="text" placeholder="نام تخصص" style=" direction:rtl;width:100%; margin-left: auto; margin-right: auto;" class=" persian  ">
+                </select>
+              </div>
+              <div ng-click="addProffSett()" style="display:flex;justify-content: flex-end;padding-top: 1%" class="col-md-2 hidden-xs hidden-sm mar2 pull-right ">
+                <span class="glyphicon glyphicon-plus" style="color: #00A8FF"></span>
+              </div>
+              <div ng-click="addProffSett()" class="col-xs-12 visible-xs visible-sm mar2">
+                <button id="takhasosbutt" type="button" class="btn modal-button center-block right persian"> افزودن تخصص</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="persian xol-xs-12" style="float: right; direction: rtl; margin-top: 1.5%; padding-right:10%; color: red;">شما مجاز هستید تا سقف ۳ تخصص را انتخاب کنید</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 100%;" class="item">
+      <div class="container-fluid">
+        <div class="h2 persian row" style="margin: 3% 0%; text-align: center; border-bottom: solid 2px lightgrey; padding-bottom: 3%; font-weight: normal">
+          راهنما
+        </div>
+        <div class="row">
+          <div style="margin-top:3%; line-height: 40px;  text-align: center; font-weight: normal;" class="h3 col-xs-10 col-xs-offset-1   persian">
+            <p style="font-size:20px;">با مراجعه به بخش راهنما، باتمامی امکانات سایت آشنا شوید</p>
+          </div>
+
+        </div>
+        <div class="row mar5">
+          <p class="uk-text-center">
+            <button ng-click="visited()" class="uk-button uk-button-primary persian" type="button">ورود به پروفایل</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div ng-hide="first">
+  	<a style="height: 10%;position: absolute;top: 80%;background: none;" class="left carousel-control" data-target="#carousel-example-generic" role="button" data-slide="prev">
+  	  <!-- <span style="color: deepskyblue; display: inline" class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> -->
+  			<i style="color: deepskyblue" class="fa fa-chevron-left fa-2x"></i>
+  	</a>
+  </div>
+  <div ng-hide="last">
+  	<a style="height: 10%;position: absolute;top: 80%;background: none;" class="right carousel-control" data-target="#carousel-example-generic" role="button" data-slide="next">
+  	  <!-- <span style="color: deepskyblue" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> -->
+  			<i style="color: deepskyblue" class="fa fa-chevron-right fa-2x"></i>
+  	</a>
+  </div>
+</div>

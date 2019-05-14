@@ -1,0 +1,107 @@
+<div class="uk-container uk-container--md">
+	<div uk-grid>
+		<div class="uk-width-2-5@m">
+			<div id="customerReq" class="uk-animation-slide-right-small card card--profile" ng-if='customer'>
+				<div class="card__body card__body--sm">
+					<div class="uk-text-center">
+						<div class="card__avatar">
+							<img class="img-responsive img-circle" ng-src="{{customer.creator.trust.profilePicture.filePath.replace('public/','')}}">
+							<img class="img-responsive img-circle" ng-if="!offer.applicator.trust.profilePicture.filePath" src="profile/images/unknown.jpg" />
+						</div>
+						<!-- /.card__avatar -->
+						<div>
+							<div class="card__title">{{customer.creator.firstname}} {{customer.creator.lastname}}
+							</div>
+							<div class="card__sub">متقاضی {{customer.profession.title}}</div>
+						</div>
+					</div>
+					<!-- /.uk-text-center -->
+					<div class="uk-margin-top">
+
+						<div class="card__info--column">
+							<div>تاریخ ثبت</div>
+							<div>{{customer.createdAt|dateConvertPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>تعداد رقبا</div>
+							<div>{{customer.offers.length  | numberToPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>مکان</div>
+							<div>{{customer.location}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>شماره تماس</div>
+							<div>{{customer.phone | numberToPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>توضیحات مشتری</div>
+							<div>{{customer.description | numberToPersia}}</div>
+						</div>
+						<div class="card__info--column">
+							<div>زمان مورد نظر مشتری</div>
+							<div>{{customer.time | numberToPersia}}</div>
+						</div>
+						<div ng-repeat="attrs in customer.attributes" class="card__info--column">
+
+							<div>{{attrs.title}}</div>
+
+							<div ng-repeat="option in attrs.options">{{option | numberToPersia}}</div>
+							<div ng-if="attrs.text!=undefined">{{attrs.text | numberToPersia}}</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- /.card__body -->
+			</div>
+		</div>
+		<div class="uk-width-3-5@m">
+			<form name="price" name='offerForm' ng-submit="offerForm.$error ? return : makeOffer()">
+				<div>
+					<div class="u-h--2">قیمت پیشنهادی خود را بنویسید</div>
+					<div class="uk-text-center">
+						<div class="u-c--3">تومان</div>
+						<div class="uk-font-bold uk-margin-small-top">
+							<div>
+								<input id="suggPrice" name="sugPrice" ng-model="suggestedPrice" type="text" class="uk-input uk-form-large input input--large" placeholder="قیمت" />
+							</div>
+							<div class="uk-margin-small-top">
+								<select ng-init="unit='روزی'" ng-model="unit" class="uk-select uk-width-auto">
+									<option>ساعتی</option>
+									<option>روزی</option>
+									<option>ماهیانه</option>
+									<option>پروژه ای</option>
+								</select>
+							</div>
+						</div>
+						<div style="text-align: center" class="persian col-xs-12 bg-danger" ng-if="price.sugPrice.$error.pattern">قیمت پیشنهادی را انگلیسی وارد کنید</div>
+					</div>
+					<div class="uk-margin-large-top">
+						<div class="u-h--2">پیام خود به مشتری را بنویسید</div>
+						<div class="">
+							<textarea class="uk-textarea uk-width-1-1 u-w--1" placeholder="متن پیام" rows="4" ng-model="message" required maxlength="150"></textarea>
+							<div class="input__meta">* نوشتن پیام لازم است</div>
+							<!-- /.input__meta -->
+						</div>
+						<div class="">
+							<div class="uk-margin-top">
+								<button promise-btn class="uk-button uk-button-primary" type="submit">ارسال</button>
+							</div>
+							<div ng-show="statusCode == 405 || statusCode == 400 || statusCode == 500" class="uk-alert-warning uk-text-center" uk-alert>
+								<a class="uk-alert-close" uk-close></a>
+								<p ng-show="statusCode == 405">شما قبلا درخواست داده اید</p>
+								<p ng-show="statusCode == 400">درخواست ارسال شده ناقص است، پیام و قیمت پیشنهادی خود را مشخص کنید</p>
+								<p ng-show="statusCode == 500">مشکلی پیش آمده مجددا تلاش کنید</p>
+							</div>
+							<div ng-show="statusCode == 200" class="uk-alert-success uk-text-center" uk-alert>
+								<a class="uk-alert-close" uk-close></a>
+								<p ng-show="statusCode == 200">درخواست با موفقیت ثبت شد</p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- /.uk-grid -->
+	</div>

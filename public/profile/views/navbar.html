@@ -1,0 +1,33 @@
+
+<nav  class="navbar navbar-fixed-top">
+    <div class="container-fluid navbarpadding">
+      <div class="navbar-header persian" style="color: white;">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar wback"></span>
+          <span class="icon-bar wback"></span>
+          <span class="icon-bar wback"></span>
+        </button>
+
+        <a class="navbar-brand visible-xs" ui-sref="home"><img alt="brand" class="img-responsive" src="./images/logowhite.png" style="max-width: 200px;"></a>
+
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navnav" style="padding-top: 2%;text-align: right;">
+          <li><a class="persian linkcolors fontweight2 fontsize" ng-click="gotoElement('why')" ng-hide="hideNavButts">چرا متخصص</a></li>
+          <li><a class="persian linkcolors fontweight2 fontsize" ng-hide="hideNavButts" ng-click="gotoElement('how')">چگونه کار می کند</a></li>
+            <li><a class="persian linkcolors fontweight2 fontsize" ui-sref="services" ng-hide="hideNavButts"> خدمات</a></li>
+            <a style="margin:0 6.5%" class="navbar-brand hidden-xs brandimg" ui-sref="home" ><img alt="brand" class="img-responsive" src="./images/logowhite.png" style="max-width: 200px;"></a>
+          <li ng-if="!isLogged" class="  hidden-xs"><a class="persian linkcolors fontweight2 fontsize" ui-sref="login"ng-hide="hideNavButts">ورود </a></li>
+          <li ng-if="isLogged"  class="  hidden-xs"><a class="persian linkcolors fontweight2 fontsize" ui-sref="dashboard"ng-hide="hideNavButts">پروفایل </a></li>
+          <li class="  hidden-xs"><a class="persian linkcolors fontweight2 fontsize" ui-sref="signupCustomer"ng-hide="hideNavButts">ثبت نام کارفرما </a></li>
+          <li class="liBtn visible-lg visible-md visible-sm hidden-xs"><button class="btn persian linkcolors linkbtn fontweight2 fontsize" ui-sref="signup">ثبت نام متخصص</button></li>
+          <li class=" hidden-lg hidden-md hidden-sm visible-xs"><button class="btn persian linkcolors linkbtn fontweight2 fontsize" ui-sref="signup">ثبت نام متخصص</button></li>
+          <li class=" hidden-lg hidden-md hidden-sm visible-xs"><button class="btn persian linkcolors linkbtn fontweight2 fontsize" ui-sref="signupCustomer">ثبت نام کارفرما</button></li>
+          <li ng-if="!isLogged" class=" hidden-lg hidden-md hidden-sm visible-xs"> <button class="btn persian linkcolors  linkbtn fontweight2 fontsize" ui-sref="login">ورود</button></li>
+          <li ng-if="isLogged" class=" hidden-lg hidden-md hidden-sm visible-xs"> <button class="btn persian linkcolors  linkbtn fontweight2 fontsize" ui-sref="dashboard">پروفایل</button></li>
+        </ul>
+        </div>
+    </div>
+</nav>
+<div>
+</div>

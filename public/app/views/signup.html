@@ -1,0 +1,68 @@
+<!--<navbar></navbar>-->
+<div class="container-fluid" style="background-color: #F7F7F9" data-ng-controller="signup" data-ng-if="!registered">
+  <form class="form-group formdes" ng-submit="register()" style="margin-top: 8%;" name="userForm" novalidate >
+    <img src="../app/images/adamlogo.png" style="max-width: 50px;" class="aligncenter">
+    <h3 class="persian align fontweight2" style="
+    margin-bottom: 5%;
+">به جمع متخصصین بپیوندید</h3>
+    <div class="row">
+      <div class="form-group col-sm-6 col-md-push-6" ng-class="{ 'has-error' : userForm.Name.$invalid && !userForm.Name.$pristine }">
+        <input  style="direction: rtl" class="form-control persian" type="text" placeholder="نام" required ng-model="user.firstname" tabindex="1"  name="Name">
+        <p  style="color: red" ng-show="userForm.Name.$invalid && !userForm.Name.$pristine" class="help-block">لطفا نام را وارد کنید</p>
+      </div>
+      <div class="form-group col-sm-6 col-md-pull-6" ng-class="{ 'has-error' : userForm.family.$invalid && !userForm.family.$pristine }">
+        <input tabindex="2" style="direction: rtl" class="form-control persian" type="text" placeholder="نام خانوادگی" required ng-model="user.lastname"  name="family" >
+        <p style="color: red" ng-show="userForm.family.$invalid && !userForm.family.$pristine" class="help-block">لطفا نام خانوادگی را وارد کنید</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-6 ">
+        <input tabindex="4"  class="form-control persian" placeholder="شماره موبایل" required name="mobile" ng-model="user.mobile">
+      </div>
+      <div class="form-group col-sm-6 " ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }" >
+        <input tabindex="3" class="form-control persian" type="email" placeholder=" ایمیل" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required ng-model="user.email"  name="email">
+        <p style="color: red" ng-show="userForm.email.$error.required && userForm.mobile.$error.required && !userForm.email.$pristine && !userForm.mobile.$pristine" class="help-block">لطفا ایمیل و یا شماره موبایل خود را به درستی وارد کنید</p>
+        <p style="color: red" ng-show=" userForm.email.$error.pattern && !userForm.email.$pristine" class="help-block">لطفا ایمیل را به درستی وارد کنید</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-push-6 col-sm-6" ng-class="{ 'has-error' : userForm.pass.$invalid && !userForm.pass.$pristine }">
+        <input autocomplete="off" class="form-control persian" type="password" id="password" minlength="6" placeholder=" رمز عبور" required ng-model="user.password" tabindex="5" name="pass">
+        <p style="color: red" ng-show="userForm.pass.$invalid && !userForm.pass.$pristine" class="help-block"> لطفا رمز خود را وارد کنید</p>
+      </div>
+      <div class="form-group col-md-pull-6 col-sm-6" ng-class="{ 'has-error' : userForm.passRepeat.$invalid && !userForm.passRepeat.$pristine }">
+        <input tabindex="6" autocomplete="off" compare-to="user.password" class="form-control persian" type="password" id="confirm_password" placeholder=" تکرار رمز عبور" required name="passRepeat" ng-model="repPass"><span id='message' tabindex="6"></span>
+        <p style="color: red" ng-show="(userForm.passRepeat.$invalid && !userForm.passRepeat.$pristine) " class="help-block"> لطفا مجددا رمز خود را به درستی وارد کنید</p>
+        <!--<p style="color: red" ng-show="userForm.passRepeat.$error && !userForm.passRepeat.$pristine" class="help-block"> رمز وارد شده تفاوت دارد</p>-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10">
+        <div class="row">
+          <select ng-if="add_proff == false" required class="location-suggestion persian select-signup col-md-offset-2">
+            <option selected disabled> انتخاب تخصص</option>
+            <option class="persian" value="{{x._id}}"  ng-repeat="x in Professions" ng-selected="user.selected_profession = x._id">{{x.title}}</option>
+          </select>
+          <input style="direction: rtl" ng-if="add_proff == true" class="form-control persian proffAdd" type="text" placeholder="  تخصص خود را وارد کنید" required name="addProff" ng-model="user.new_profession">
+        </div>
+        <div class="row">
+          <button ng-click="openbox()" ng-if="add_proff ==false" class="btn btndesign aligncenter persian col-md-4 newjob-butt col-sm-9 col-xs-9 left" type="button" style="border-radius: 22px;">اضافه کردن تخصص</button>
+          <button ng-click="openbox()" ng-if="add_proff ==true" class="btn btndesign aligncenter persian col-md-4 newjob-butt col-sm-9 col-xs-9 left" type="button" style="border-radius: 22px;">بازگشت</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div style="margin-top: 4%;" class="checkbox col-sm-10 col-md-offset-4 col-xs-offset-2">
+        <a ui-sref="rules " class="col-md-push-5 col-xs-push-2 persian" dir="rtl" style="    margin-left: -14%;"> شرایط و قوانین را مطالعه کرده و با آن ها موافقم</a>
+        <input required class="col-md-pull-5 col-xs-pull-2 margin44" name="check"  type="checkbox" style="position: relative;">
+      </div>
+    </div>
+    <div class="row">
+      <button tabindex="7" ng-disabled="(userForm.check.$error||userForm.family.$invalid || userForm.Name.$invalid || userForm.pass.$invalid || userForm.passRepeat.$invalid || userForm.addProff.$invalid || userForm.email.$error.pattern) || (userForm.email.$invalid && userForm.mobile.$invalid) " class="btn btndesign  persian btndesignn btnproblemfix" type="submit" style="border-radius: 22px;   position: static;
+  margin-left: 50%;">عضویت</button>
+      <div style="text-align: center" ng-if="err" class="alert alert-danger" role="alert">خطایی بوجود آمده مجددا تلاش کنید</div>
+      <div style="text-align: center" ng-if="alreadySigned" class="alert alert-danger" role="alert">شما قبلا ثبت نام نموده اید</div>
+    </div>
+  </form>
+</div>
+<pagefooter></pagefooter>

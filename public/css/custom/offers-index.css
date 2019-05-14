@@ -1,0 +1,306 @@
+body {
+    font-family: IRANSans;
+    background-color: #f5f5f5;
+    color: #555;
+}
+
+/*general*/
+dt, dd {
+    margin: 0;
+    padding: 0;
+}
+
+dt {
+    padding-top: 10px;
+}
+
+
+.panel-heading {
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: initial;
+    border-top-right-radius: initial;
+    text-align: -webkit-center;
+}
+
+/*paragraph*/
+p {
+    text-align: justify;
+    font-weight: 300;
+}
+
+/*image*/
+.user-image-100-100 {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+    border-radius: 50%;
+}
+
+.user-profile-image {
+    position: absolute;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+
+    /* For the following settings we set 100%, but it can be higher if needed
+    See the answer's update */
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+}
+
+/*progress bar*/
+.progress {
+    width: 85%;
+}
+
+/*right side bar*/
+
+.user-hint {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.user-fullname {
+    font-size: x-large;
+}
+
+.user-job {
+    color: gray;
+    font-size: larger;
+}
+
+.side-col {
+    font-weight: 300;
+    text-align: -webkit-center;
+}
+
+/*icon*/
+.icon-large i {
+    padding-top: 5px;
+    font-size: large;
+}
+
+.icon-x-large i {
+    /*padding-top: 8px;*/
+    font-size: x-large;
+}
+
+.icon-medium i {
+    font-size: medium;
+}
+
+.icon-large,
+.icon-x-large,
+.icon-medium {
+    direction: ltr;
+}
+
+.user-rate-counts {
+    font-weight: bolder;
+    padding-top: 15px;
+}
+
+.user-average-rate-big-num {
+    font-size: 55px;
+    font-weight: 600;
+}
+
+.user-intro-video {
+    padding: 0;
+    margin: 0;
+}
+
+.skill {
+    color: #fff;
+    font-size: small;
+    background-color: #337ab7;
+    padding: 3px 7px;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.date {
+    color: #888;
+    padding: 0;
+    margin: 0;
+}
+
+.customer-name {
+    padding: 0;
+    margin: 0;
+}
+
+.comment-text {
+    font-weight: 300;
+    color: #666;
+}
+
+ul.comments-list {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.block {
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.profile-img-80-80 {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+a:hover,
+a:active,
+a:visited,
+a:focus {
+    text-decoration: none;
+}
+
+.user-social-links a i {
+    font-size: x-large;
+    padding: 3% 0;
+    display: block;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+th, td {
+    text-align: -webkit-center;
+}
+
+td {
+    font-weight: 300;
+    font-size: small;
+}
+
+th {
+    font-weight: 200;
+    font-size: initial;
+}
+
+#table-heading {
+    text-align: -webkit-center;
+    font-weight: 300;
+    font-size: x-large;
+    color: white;
+}
+
+.table {
+    border-bottom-left-radius: inherit !important;
+    border-bottom-right-radius: inherit !important;
+}
+
+tbody{
+    border-bottom-left-radius: inherit !important;
+    border-bottom-right-radius: inherit !important;
+}
+
+/*.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child{*/
+/*border-bottom-left-radius: inherit !important;*/
+/*border-bottom-right-radius: inherit !important;*/
+/*}*/
+/*.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:first-child {*/
+/*border-bottom-right-radius: inherit !important;*/
+/*}*/
+/*.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:last-child {*/
+/*border-bottom-left-radius: inherit !important;*/
+/*}*/
+
+.panel-heading {
+    text-align: -webkit-center;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+div.panel-heading{
+    background-color: aliceblue !important;
+    font-size: large !important;
+}
+
+
+.panel{
+    border-radius: 15px;
+}
+
+.panel>.table-responsive {
+    border-radius: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.done-project {
+    height: 225px;
+    padding: 20px;
+    text-align: center;
+}
+
+.done-project h4,
+.done-project h3 {
+    font-weight: 300;
+}
+
+.done-project .btn {
+    margin-top: 15%;
+}
+
+.table-responsive {
+    height: 300px;
+}
+
+.text-align-centered{
+    text-align: -webkit-center;
+}
+
+.panel-heading h2{
+    font-weight: 100;
+}
+
+.job-title{
+    padding: 10px 0px;
+    font-size: large;
+    font-weight: 300;
+    background-color: aliceblue;
+}
+

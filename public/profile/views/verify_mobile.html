@@ -1,0 +1,38 @@
+<div class="container" uk-height-viewport="expand: true">
+	<div class="verify__wrapper">
+		<form id="contact" class="verify uk-text-center" ng-submit="submitCode()">
+			<div class="verify__inner">
+				<div style="width:80%; padding-bottom: 15px; border-bottom: 2px solid #3e9ad7; display:block; margin:auto; margin-bottom: 20px;">
+					<a ui-sref="landing.home"><img class="img-responsive center-block imglimit logo-size" src="./images/logo-new-blue-black.png" style=" display: block; margin: auto;"></a>
+				</div>
+				<p class='uk-alert' ng-hide="showLogin">ثبت نام شما با موفقیت انجام شد برای تایید شماره موبایل کد ارسال شده را وارد نمایید</p>
+				<p class='uk-alert' ng-show="showLogin">شماره شما تایید نشده، برای تایید شماره موبایل کد ارسال شده را وارد نمایید</p>
+				<fieldset>
+					<input class="uk-input" ng-model="verifcode" name="token" placeholder="کد تایید" type="text" tabindex="1" autocomplete>
+				</fieldset>
+
+				<fieldset>
+					<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">ارسال</button>
+					<div ng-if="wrongCode" class="uk-alert uk-alert-danger">کد وارد شده اشتباه است</div>
+					<div class="uk-alert uk-alert-primary">به بزرگی و کوچکی حروف حساس است</div>
+				</fieldset>
+				<div class="uk-alert uk-alert-success" ng-show="successShow">
+					{{successMsg}}
+				</div>
+				<div class="uk-alert uk-alert-danger" ng-show="errShow">
+					{{errorMsg}}
+				</div>
+			</div>
+			<!-- /.verify__inner -->
+			<div class="password-reset">
+				<p class="copyright">
+					<a ng-click="resendCode()" href="" target="_blank" class="uk-button uk-button-link">ارسال مجدد کد تایید؟</a>
+				</p>
+			</div>
+		</form>
+		<!-- /.verify -->
+	</div>
+	<!-- /.verify__wrapper -->
+</div>
+<!-- /.container -->
+<pagefooter></pagefooter>

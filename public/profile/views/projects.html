@@ -1,0 +1,169 @@
+<div class="uk-container uk-height-1-1">
+	<div ui-view class="projects uk-height-1-1" ng-if='$root.$projects'>
+		<div class="uk-text-center uk-height-1-1">
+			<div class="uk-margin-bottom">
+				<button ng-click="resetArgs(); openModal()" type="button" class="btn btn-default btnDes" ng-disabled="$root.isModalOpen">ایجاد پروژه جدید</button>
+			</div>
+			<div class="uk-child-width-1-3@m uk-grid-match" uk-grid>
+				<div ng-repeat="project in $root.projects | orderBy:'-' track by $index" class="uk-animation-slide-top-small project-fade card--projects" style='animation-delay: {{($index / 10)}}s'>
+					<div ng-if="project.status == 'available' || project.status == 'reserved' || project.status == 'expired' || project.status == 'closed'">
+						<div class="card card--sm uk-text-center" ng-class='{"card--disabled": project.status == "expired" || project.status == "closed"}'>
+							<div class="card__close">
+								<a tabindex="0" tooltip-placement='right' uib-tooltip="حذف پروژه" tooltip-trigger="mouseenter" uk-close="uk-close" ng-click='deleteProject(project._id)'></a>
+							</div>
+							<div>
+								<div class="clearfix">
+									<div class="uk-margin-bottom uk-margin-medium-top">
+										<h5>{{project.profession.title}}</h5>
+									</div>
+									<div class="uk-child-width-1-1">
+										<div>
+											<div uk-grid class="uk-grid-small uk-grid-divider uk-child-width-1-2 uk-flex-middle card__body--sm">
+												<div>
+													<div>
+														<div class="u-h--4 u-c--3 uk-margin-small-bottom">متقاضی</div>
+													</div>
+													<div ng-if="project.status != 'reserved'">
+														<div class="u-s--3 u-b--5">{{project.offers.length | numberToPersia}}</div>
+													</div>
+													<div ng-if="project.status == 'reserved'">
+														<div class="u-s--3 u-b--5">
+															{{project.offers.applicator.firstname}} {{project.offers.applicator.lastname}}
+														</div>
+													</div>
+												</div>
+												<div>
+													<div>
+														<div class="u-h--4 u-c--3 uk-margin-small-bottom">تاریخ ثبت
+														</div>
+													</div>
+													<div>
+														<div class="u-s--3 u-b--5">{{project.createdAt|dateConvertPersia}}</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card__footer">
+											<div class="">
+												<span>
+													<a ui-sref='pages.projects.single({id: project._id})' ng-if="project.status == 'available' && project.offers.length > 0" class="btn btn-default btnDes">مشاهده متقاضیان</a>
+												</span>
+												<div ng-if="project.status == 'available' && project.offers.length == 0 " class="">در انتظار پیشنهاد</div>
+												<div ng-if="project.status == 'reserved' ">
+													<div class="u-c--2 u-s--2 uk-margin-small-bottom">در انتظار تایید متخصص</div>
+													<a ui-sref='pages.profile({job_id: project._id, offer_id: project.offers._id})' class="btn btn-default btnDes">پروفایل متخصص</a>
+												</div>
+												<div ng-if='project.status == "expired"'>منقضی شده</div>
+												<div ng-if='project.status == "closed"'>بسته شده</div>
+											</div>
+											<!-- <div class="uk-margin-top"> -->
+											<!-- <button type="button" class="btn btn-default persian center-block" style="border: none">درخواست مجدد</button> -->
+											<!-- </div> -->
+										</div>
+										<!-- /.card__body -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="project.status == 'doing' || project.status == 'completed'">
+						<div class="card card--sm uk-text-center card--project" ng-class='{"card--disabled": project.status == "expired"}'>
+							<div class="card__body">
+								<div class="uk-margin-medium-bottom uk-margin-top">
+									<h5>{{project.profession.title}}</h5>
+								</div>
+								<div class="card__avatar">
+									<img class="img-responsive img-circle" ng-src="{{project.offers.applicator.trust.profilePicture.filePath.replace('public/','')}}">
+								</div>
+								<div class="uk-margin-small-top uk-text-center">
+									<a class="u-s--2" ui-sref="pages.profile({job_id: project._id, offer_id: project.offers._id})">{{project.offers.applicator.firstname}} {{project.offers.applicator.lastname}}</a>
+								</div>
+								<div>
+									<div ng-show="rated||project.status == 'completed'" class="starField">
+										<fieldset class="rating2">
+											<input ng-model="rated[$index]" type="radio" id="star11{{project._id}}" name="rating2{{project._id}}" value="1" />
+											<label style="color: rgb(255,215,0)" ng-if="project.offers.rate>=5" class="full" for="star11{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star10{{project._id}}" name="rating2{{project._id}}" value="1" />
+											<label ng-if="project.offers.rate<5" class="full" for="star10{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star22{{project._id}}" name="rating2{{project._id}}" value="2" />
+											<label style="color: rgb(255,215,0)" ng-if="project.offers.rate>=4" class="full" for="star22{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star20{{project._id}}" name="rating2{{project._id}}" value="2" />
+											<label ng-if="project.offers.rate<4" class="full" for="star20{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star33{{project._id}}" name="rating2{{project._id}}" value="3" />
+											<label style="color: rgb(255,215,0)" ng-if="project.offers.rate>=3" class="full" for="star33{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star30{{project._id}}" name="rating2{{project._id}}" value="3" />
+											<label ng-if="project.offers.rate<3" class="full" for="star30{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star44{{project._id}}" name="rating2{{project._id}}" value="4" />
+											<label style="color: rgb(255,215,0)" ng-if="project.offers.rate>=2" class="full" for="star44{{project._id}}"></label>
+											<input ng-model="rated[$index]" type="radio" id="star40{{project._id}}" name="rating2{{project._id}}" value="4" />
+											<label ng-if="project.offers.rate<2" class="full" for="star40{{project._id}}"></label>
+											<input ng-model="rated[$index]" style="margin: auto;" type="radio" id="star55{{project._id}}" name="rating2{{project._id}}" value="5" />
+											<label style="color: rgb(255,215,0)" ng-if="project.offers.rate>=1" class="full" for="star55{{project._id}}"></label>
+											<input ng-model="rated[$index]" style="margin: auto;" type="radio" id="star50{{project._id}}" name="rating2{{project._id}}" value="5" />
+											<label ng-if="project.offers.rate<1" class="full" for="star50{{project._id}}"></label>
+										</fieldset>
+									</div>
+									<div ng-hide="rated||project.status == 'completed'" class="starField">
+										<fieldset class="rating">
+											<input ng-model="rate[$index]" style="margin: auto;" type="radio" id="star5{{project._id}}" name="rating{{project._id}}" value="5" />
+											<label style="margin: auto" class="full" for="star5{{project._id}}" title=""></label>
+											<input ng-model="rate[$index]" type="radio" id="star4{{project._id}}" name="rating{{project._id}}" value="4" />
+											<label class="full" for="star4{{project._id}}" title=""></label>
+											<input ng-model="rate[$index]" type="radio" id="star3{{project._id}}" name="rating{{project._id}}" value="3" />
+											<label class="full" for="star3{{project._id}}" title=""></label>
+											<input ng-model="rate[$index]" type="radio" id="star2{{project._id}}" name="rating{{project._id}}" value="2" />
+											<label class="full" for="star2{{project._id}}" title=""></label>
+											<input ng-model="rate[$index]" type="radio" id="star1{{project._id}}" name="rating{{project._id}}" value="1" />
+											<label class="full" for="star1{{project._id}}" title=""></label>
+										</fieldset>
+									</div>
+								</div>
+								<!-- /.uk-margin-top -->
+								<div class="uk-margin-small-top">
+									<textarea ng-disabled="rated || project.status == 'completed'" ng-model="project.offers.comment" class="uk-textarea card__textarea"></textarea>
+								</div>
+								<div ng-hide="rated||project.status == 'completed'" class="uk-margin-small-top">
+									<button promise-btn ng-disabled="(project.offers.comment==undefined || project.offers.comment=='')||(rate[$index] == undefined) " ng-click="rating(project.offers.comment, rate[$index], project.offers)" type="button" class="uk-button uk-button-primary">ثبت نظر</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="$root.projects.length == 0" class="uk-flex uk-flex-middle uk-flex-center uk-height-1-1 uk-animation-shake">
+				<div class="uk-heading-line uk-text-center uk-width-1-1">
+					<span>پروژه ای ثبت نکرده اید</span>
+				</div>
+			</div>
+		</div>
+		<!-- /.uk-text-center -->
+	</div>
+</div>
+
+<div id="createJobFromLanding" class="uk-flex-top" uk-modal>
+	<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+		<p class="uk-text-right h4">
+			شما در حال ساخت یک پروژه بودید
+		</p>
+		<p class="uk-text-center">
+			<button ng-click="declineLandingJob()" class="uk-button uk-button-default persian" type="button">منصرف شدم</button>
+			<button ng-click="createLandingJob()" class="uk-button uk-button-primary persian" type="button">بله، میسازم</button>
+		</p>
+		<div style="text-align: center" class="alert alert-danger persian h6" role="alert" dir="rtl" ng-show="addProffErr2">
+			<button ng-click="addProffErr2=false;" type="button" class="close" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button> امکان ایجاد این شغل برای شما وجود ندارد
+		</div>
+	</div>
+</div>
+
+<div id="genderModal" class="uk-flex-top" uk-modal>
+	<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+		<p class="persian uk-text-center h4">جنسیت خود را مشخص کنید</p>
+		<p class="uk-text-center">
+			<button ng-click="setGender('male')" class="uk-button uk-button-default persian" type="button">مرد
+			</button>
+			<button ng-click="setGender('female')" class="uk-button uk-button-default persian" type="button">زن</button>
+		</p>
+	</div>
+</div>

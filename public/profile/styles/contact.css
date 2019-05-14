@@ -1,0 +1,227 @@
+/*.social-buttons {
+  height: 90px;
+  margin: auto;
+  font-size: 0;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-button {
+  display: inline-block;
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 4px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: .99;
+  border-radius: 28%;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+  -webkit-transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+  transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+.social-button:before {
+  content: '';
+  background-color: #000;
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  top: 90%;
+  left: -110%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+  transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+.social-button .fa {
+  font-size: 22px;
+  vertical-align: middle;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+  transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+.social-button.facebook:before {
+  background-color: #3B5998;
+}
+.social-button.facebook .fa {
+  color: #777;
+}
+.social-button.twitter:before {
+  background-color: #3CF;
+}
+.social-button.twitter .fa {
+  color: #777;
+}
+.social-button.google:before {
+  background-color: #DC4A38;
+}
+.social-button.google .fa {
+  color: #777;
+}
+.social-button.dribbble:before {
+  background-color: #F26798;
+}
+.social-button.dribbble .fa {
+  color: #777;
+}
+.social-button.skype:before {
+  background-color: #00AFF0;
+}
+.social-button.skype .fa {
+  color: #777;
+}
+
+.social-button.instagram:before {
+  background-color: #c13584;
+}
+.social-button.instagram .fa {
+  color: #777;
+}
+
+.social-button.linkedin:before {
+  background-color: #0077b5;
+}
+.social-button.linkedin .fa {
+  color: #777;
+}
+.social-button.foursquare:before {
+  background-color: #f94877;
+}
+.social-button.foursquare .fa {
+  color: #777;
+}
+
+
+.social-button.telegram:before {
+  background-color: #0088cc;
+}
+.social-button.telegram .fa {
+  color: #777;
+}
+
+
+.social-button:focus:before, .social-button:hover:before {
+  top: -10%;
+  left: -10%;
+}
+.social-button:focus .fa, .social-button:hover .fa {
+  color: #fff;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+
+.contact-header {
+}
+
+.contact-header p{
+  font-size: 20px;
+  color: rgb(21, 35, 57);
+  direction: rtl;
+}
+
+.contact-header hr {
+  margin-top: -5px;
+  border-width: 2px;
+  margin-bottom: 20px;
+  border-color: #293549;
+}
+
+.contact-box {
+  margin-bottom: 92px;
+  direction: rtl;
+  line-height: 1.618;
+
+}
+.contact-box div{
+  display: inline-block;
+  color : #616161;
+  margin-left: 10px;
+  font-size: 15px;
+}
+.contact-box i{
+  font-size: 18px;
+  margin-left: 5px;
+  color: #1f9fda;
+}
+.contact-box i.last{
+  font-size: 14px !important;
+}
+.contact-box p{
+  font-weight: 900;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 15px;
+  line-height: 1.618;
+}
+
+.contact-page {
+  padding-bottom: 10px;
+}
+
+.contact-container {
+  padding: 50px 0!important;
+
+}
+
+.innerpage-banner {
+  background: url("../images/place.png") no-repeat center center / cover;
+}
+
+.inner-footer {
+  direction: rtl;
+  text-align: center;
+  line-height: 2;
+}
+.inner-footer div{
+  color: #fff;
+}
+.inner-footer a{
+  color: #d0d0d0;
+  margin : 0 10px;
+
+}
+
+.footer-bottom {
+  padding: 30px 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #888888;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.form-control{
+  text-align: right;
+  box-shadow: none;
+  background-color: rgba(1,1,1,0);
+}
+.btndes{
+  border-radius: 22px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 6%;
+  color: white;
+  outline: 0;
+  background-color: #1c2a3f;
+}
+.btndes:hover{
+  color: white;
+}
+.reqform{
+  display: none;
+}
+.contact-box div{
+  width: 100%;
+}
+.btn-send-mail{
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+}
+*/

@@ -1,0 +1,108 @@
+<div class="offers">
+	<div ng-repeat="offer in project" class="uk-animation-slide-right-small card card--offer card--sm" style="animation-delay: {{ $index / 7 }}s">
+		<div class="card__body">
+			<div class="uk-flex uk-flex-between uk-flex-nowrap uk-flex-row uk-flex-middle">
+
+				<div class="uk-clearfix uk-flex uk-flex-row uk-flex-middle">
+					<div class="card__avatar">
+						<img ng-src="{{offer.applicator.trust.profilePicture.filePath.replace('public/','')}}" class="img-circle img-responsive" />
+					</div>
+					<div>
+						<div class="card__title">
+							{{offer.applicator.firstname}} {{offer.applicator.lastname}}
+						</div>
+						<div class="card__sub">
+							{{offer.userProfession.profession.title}}
+						</div>
+					</div>
+				</div>
+
+				<div>
+
+					<div class="card__price">
+						<div ng-if='offer.costPerUnit'>
+							<span ng-if="offer.costUnit == 'project'">پروژه ای</span>
+							<span ng-if="offer.costUnit == 'daily'">روزی</span>
+							<span ng-if="offer.costUnit == 'monthly'">ماهیانه</span>
+							<span ng-if="offer.costUnit == 'hourly'">ساعتی</span>
+							<strong>{{offer.costPerUnit | numberToPersia}}</strong>
+							<span>تومان</span>
+						</div>
+
+						<div ng-if='!offer.costPerUnit'>
+							توافقی
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+
+			<div uk-grid class="uk-child-width-expand uk-margin-top uk-text-center uk-grid-divider uk-grid-small uk-flex-nowrap">
+				<div>
+					<div>
+						<div class="u-c--3 u-h--4">
+							امتیاز
+						</div>
+						<div class="rating2 uk-flex uk-flex-nowrap uk-flex-center">
+							<input type="radio" id="star11" name="rating3" value="1" />
+							<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=5" class="full" for="star11"></label>
+							<input type="radio" id="star101" name="rating3" value="1" />
+							<label ng-if="offer.userProfession.rate<5" class="full" for="star101"></label>
+							<input type="radio" id="star21" name="rating3" value="2" />
+							<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=4" class="full" for="star21"></label>
+							<input type="radio" id="star201" name="rating3" value="2" />
+							<label ng-if="offer.userProfession.rate<4" class="full" for="star201"></label>
+							<input type="radio" id="star31" name="rating3" value="3" />
+							<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=3" class="full" for="star31"></label>
+							<input type="radio" id="star301" name="rating3" value="3" />
+							<label ng-if="offer.userProfession.rate<3" class="full" for="star301"></label>
+							<input type="radio" id="star41" name="rating3" value="4" />
+							<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=2" class="full" for="star41"></label>
+							<input type="radio" id="star401" name="rating3" value="4" />
+							<label ng-if="offer.userProfession.rate<2" class="full" for="star401"></label>
+							<input type="radio" id="star51" name="rating3" value="5" />
+							<label style="color: rgb(255,215,0)" ng-if="offer.userProfession.rate>=1" class="full" for="star51"></label>
+							<input type="radio" id="star501" name="rating3" value="5" />
+							<label ng-if="offer.userProfession.rate<1" class="full" for="star501"></label>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<div class="u-c--3 u-h--4">
+							درصد اطمینان
+						</div>
+						<div>
+							<div class="progress progress--md" ng-class='{"progress--over": offer.applicator.trust.amount > 62}'>
+								<div class="progress-bar" data-value='{{offer.applicator.trust.amount | numberToPersia}}%' role="progressbar" aria-valuenow="{{offer.applicator.trust.amount}}" aria-valuemin="0" aria-valuemax="100" style="width:{{offer.applicator.trust.amount}}%"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="u-c--3 u-h--4">
+						دفعات استخدام
+					</div>
+					<div dir="rtl">
+						{{offer.applicator.completedJobs | numberToPersia}}
+					</div>
+				</div>
+				<!--<div class="col-xs-12 imgCol biiz" style="height: 100px; overflow-y: hidden"><button class="btn btn-default loadMore">load more</button></div>-->
+
+			</div>
+			<div>
+				<p class="card__desc" dir="rtl">
+					{{offer.description}}
+				</p>
+			</div>
+		</div>
+		<div ng-if="offer.status != 'canceled'" class="uk-width-1-1">
+			<a class="card__btn card__btn--footer" ui-sref='pages.profile({job_id: offer.job, offer_id: offer._id})'>مشاهده جزییات</button>
+		</div>
+		<div ng-if="offer.status == 'canceled'" class="uk-width-1-1">
+			<button class="card__btn card__btn--footer" disabled>متخصص درخواست استخدام شما را رد کرده است</button>
+		</div>
+	</div>
+</div>

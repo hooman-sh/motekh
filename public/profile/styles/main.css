@@ -1,0 +1,32 @@
+.trans {
+		background-color: rgba(1, 1, 1, 0);
+}
+
+.pWp {
+		color: white;
+		font-size: 28px;
+		text-align: center;
+		font-weight: 600;
+}
+
+.carousel-indicators li {
+		position: relative;
+		-webkit-box-flex: 1;
+		-webkit-flex: 1 0 auto;
+		-ms-flex: 1 0 auto;
+		flex: 1 0 auto;
+		max-width: 30px;
+		height: 3px;
+		margin-right: 3px;
+		margin-left: 3px;
+		text-indent: -999px;
+		cursor: pointer;
+		background-color: rgba(255, 255, 255, .5);
+}
+
+.browsehappy {
+		margin: 0.2em 0;
+		background: #ccc;
+		color: #000;
+		padding: 0.2em 0;
+}

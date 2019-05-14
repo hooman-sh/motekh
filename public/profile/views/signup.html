@@ -1,0 +1,105 @@
+<div class="signup" ng-controller="signup" uk-height-viewport="expand: true">
+	<div class="uk-container uk-container-expand uk-height-1-1">
+		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center">
+			<div class="card">
+				<div class="card__body">
+					<form ng-submit="register()" name="userForm" class='form form--signup' novalidate>
+						<div class="uk-text-center">
+							<div class="uk-margin-bottom">
+								<a ui-sref='landing.home'>
+									<img src="./images/logo-new-blue-black.png" style="max-width: 130px">
+								</a>
+							</div>
+							<!-- /.uk-margin-bottom -->
+							<h2 class="u-h--3 uk-margin-bottom">به جمع متخصصین بپیوندید</h2>
+						</div>
+						<!-- /.uk-text-center -->
+						<div uk-grid class="uk-child-width-1-2@s uk-grid-small">
+							<div>
+								<div class="form__row">
+									<input pattern="^[ آ‌يؤأء‌ئابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیك]+$" class="uk-input" type="text" placeholder="نام (فارسی)" required ng-model="user.firstname" name="Name" autofocus ng-class='{"uk-form-danger": (userForm.Name.$invalid && err), "uk-form-success": (userForm.Name.$valid && err)}'>
+									<p ng-class="{'form__error--visible': (userForm.Name.$invalid && err)}" class="form__error">لطفا نام را فارسی وارد کنید</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<div>
+								<div class="form__row">
+									<input pattern="^[آ‌يؤأء‌ئابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیك ]+$" class="uk-input" type="text" placeholder="نام خانوادگی (فارسی)" required ng-model="user.lastname" name="family" ng-class='{"uk-form-danger": (userForm.family.$invalid && err), "uk-form-success": (userForm.family.$valid && err)}'>
+									<p ng-class="{'form__error--visible': (userForm.family.$invalid && err)}" class="form__error">لطفا نام خانوادگی را فارسی وارد کنید</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<div>
+								<div class="form__row">
+									<input autocomplete="off" class="uk-input" type="email" placeholder="ایمیل (اختیاری)" ng-model="user.email" name="email" ng-class='{"uk-form-danger": (userForm.email.$invalid && err), "uk-form-success": (userForm.email.$valid && err)}'>
+									<p ng-class="{'form__error--visible': (userForm.email.$invalid && err)}" class="form__error">لطفا ایمیل را به درستی وارد کنید</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<div>
+								<div class="form__row">
+									<input ng-maxlength="11" size='11' ng-minlength="11" pattern="^[0123456789]+$" autocomplete="off" class="uk-input" placeholder="شماره موبایل (انگلیسی)" required name="mobile" ng-model="user.mobile" type="tel" ng-class='{"uk-form-danger": (userForm.mobile.$invalid && err), "uk-form-success": (userForm.mobile.$valid && err)}'>
+									<p ng-class="{'form__error--visible': (userForm.mobile.$invalid && err)}" class="form__error">لطفا شماره موبایل خود را انگلیسی و با ۰۹ وارد کنید</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<div>
+								<div class="form__row">
+									<input autocomplete="off" class="uk-input" type="password" id="password" minlength="6" placeholder="رمز عبور" required ng-model="user.password" name="pass" ng-class='{"uk-form-danger": (userForm.pass.$invalid && err), "uk-form-success": (userForm.pass.$valid && err)}'>
+									<p ng-class="{'form__error--visible': (userForm.pass.$invalid && err)}" class="form__error">
+										رمزعبور باید حداقل ۶ کاراکتر داشته باشد</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<div>
+								<div class="form__row">
+									<input autocomplete="off" compare-to="user.password" class="uk-input" type="password" id="confirm_password" placeholder="تکرار رمز عبور" required name="passRepeat" ng-model="repPass" ng-class='{"uk-form-danger": (userForm.passRepeat.$invalid && err), "uk-form-success": (userForm.passRepeat.$valid && err)}'>
+									<p ng-class="{'form__error--visible': userForm.passRepeat.$invalid && err}" class="form__error">لطفا مجددا رمز خود را به درستی وارد کنید</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+						</div>
+						<div uk-grid class="uk-flex-center uk-grid-small">
+							<div class="uk-width-1-2@s">
+								<div class="form__row">
+									<div class="autocomplete autocomplete--signup">
+										<input typeahead class="autocomplete__field uk-input ac__validate" ng-class='{"uk-form-danger": ((userForm.profession.$invalid || !user.selected_profession) && err), "uk-form-success": (user.selected_profession && err)}' name='profession' ng-model='selected_profession' placeholder='چه تخصصی دارید؟' title='چه تخصصی دارید؟' required/>
+									</div>
+									<div class="input__meta input__meta--mt">* تخصص خود را از تخصص های موجود انتخاب کنید</div>
+									<!-- /.input__meta -->
+									<div class="input__meta">* در صورتی که تخصص شما موجود نیست به پشتیبانی اعلام کنید تا پس از بررسی اضافه شود</div>
+									<!-- /.input__meta -->
+									<p ng-class='{"form__error--visible": ((userForm.profession.$invalid || !user.selected_profession) && err)}' class="form__error">لطفا تخصص خود را به درستی وارد کنید</p>
+								</div>
+								<!-- /.form__row -->
+							</div>
+							<!-- /.uk-width-1-2@s -->
+						</div>
+
+						<div class="uk-text-center uk-margin-top">
+							<button ng-click='register()' promise-btn class="uk-button uk-button-primary" type="submit">عضویت</button>
+
+							<div ng-if="alreadySigned" uk-alert class="uk-alert-danger">
+								شما قبلا ثبت نام نموده اید
+							</div>
+
+							<div ng-if="serverErr" uk-alert class="uk-alert-danger">خطایی بوجود آمده مجددا تلاش کنید</div>
+
+							<div class="uk-text-meta uk-margin-top">
+								<i class="fa fa-check-square-o fa-lg fa-fw"></i>
+								<a ui-sref="landing.rules ">قوانین و مقررات
+								</a>سایت را خوانده و با آن موافقم
+							</div>
+						</div>
+					</form>
+					<!-- /.form -->
+				</div>
+				<!-- /.card__body -->
+			</div>
+			<!-- /.card -->
+		</div>
+		<!-- /.uk-flex uk-height-1-1 -->
+	</div>
+	<!-- /.uk-container -->
+</div>
+<!-- /.signup -->

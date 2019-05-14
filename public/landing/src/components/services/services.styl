@@ -1,0 +1,51 @@
+@import '../../styles/variables'
+
+.services
+	padding 7rem 2rem 1rem
+
+	&__row
+		margin-bottom 2rem
+		padding-bottom 2rem
+
+		border-bottom 1px solid #03a9f4
+
+		&:last-child
+			margin-bottom 0
+			padding-bottom 0
+			border-bottom none
+
+	&__heading
+		font-weight 600
+		font-size 1.5rem
+		margin-bottom 1.5rem
+
+	&__link
+		border none
+		background rgba(0,0,0,0)
+
+		padding-bottom .4rem
+		margin-bottom .6rem
+		appearance none
+		border-bottom 1px solid rgba(0,0,0,0)
+
+		color #03a9f4
+		font-weight 400
+		font-size .9rem
+
+		white-space normal
+		cursor pointer
+
+		@media (max-width $sm)
+			font-size 1rem
+
+		&
+		&:hover
+		&:focus
+			text-decoration none
+
+		&:hover
+			color #212121
+
+		&:focus
+			outline none
+			border-bottom-color inherit

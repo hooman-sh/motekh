@@ -1,0 +1,23 @@
+<div class="jr_container animate" id="jr_step_{{joyride.current}}">
+	<div class="jr_step">
+		<h4 ng-if="joyride.config.steps[joyride.current].title" class="jr_title">{{joyride.config.steps[joyride.current].title}}</h4>
+		<div ng-if="joyride.config.steps[joyride.current].content" class="jr_content" ng-bind-html="joyride.config.steps[joyride.current].content | jr_trust"></div>
+	</div>
+	<div class="jr_buttons animate">
+		<div ng-if='!$root.settingGender'>
+			<div class="jr_left_buttons" ng-if='joyride.current > 1'>
+				<a class="jr_button jr_skip" ng-click="joyride.start = false">بستن</a>
+			</div>
+
+			<div class="jr_right_buttons animate">
+				<a class="jr_button jr_next" ng-click="joyride.next()" ng-bind="(joyride.current == joyride.config.steps.length-1) ? 'پایان' : 'بعدی'"></a>
+				<a class="jr_button jr_prev" ng-click="joyride.prev()" ng-class="{'disabled' : joyride.current === 0}">قبلی</a>
+			</div>
+		</div>
+
+		<div ng-if='$root.settingGender' class="uk-text-center">
+			<a class='jr_button' ng-click="$root.setGender('male'); joyride.next()" type="button">مرد</a>
+			<a class='jr_button' ng-click="$root.setGender('female'); joyride.next()" type="button">زن</a>
+		</div>
+	</div>
+</div>

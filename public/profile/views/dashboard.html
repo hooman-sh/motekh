@@ -1,0 +1,574 @@
+<div class="dashboard">
+	<div class="dashboard__inner">
+		<div class="uk-container uk-container--md">
+			<div uk-grid>
+				<div class="uk-width-2-5@m" ng-show='$root.user'>
+					<div id="info-card" class="card card--profile">
+						<div class="card__body card__body--sm uk-text-center">
+							<div>
+								<div class="card__avatar" id='intro-1' ng-click="openModal('profilePic1')">
+									<img class="img-responsive img-circle" ng-src="{{$root.user.trust.profilePicture.filePath.replace('public/','')}}" />
+									<img class="img-responsive img-circle" ng-if="!$root.user.trust.profilePicture.filePath" src="profile/images/unknown.jpg" />
+								</div>
+								<div>
+									<h1 class="u-h--1">{{$root.user.firstname}}
+										{{$root.user.lastname}}</h1>
+								</div>
+							</div>
+							<div class="thumb-info" id='intro-2'>
+								<div class="">
+		
+									<div class="">
+										<div class="">
+											<div class="progress progress--md" ng-class='{"progress--over": $root.user.trust.amount > 62}'>
+												<div class="progress-bar" role="progressbar" aria-valuenow="{{$root.user.trust.amount}}" data-value='{{$root.user.trust.amount | numberToPersia}}٪' aria-valuemin="0" aria-valuemax="100" style="width:{{$root.user.trust.amount}}%"></div>
+											</div>
+										</div>
+										<div class="uk-margin-small-top">
+											<button type="button" class='uk-button uk-button-link u-b--7 u-s--2' ng-click="openTrustModal()">افزایش درصد اطمینان</button>
+										</div>
+		
+									</div>
+								</div>
+							</div>
+						</div>
+						<header class="card__heading card__heading--bw">
+							اطلاعات تماس
+						</header>
+						<div class="card__body card__body--sm">
+							<div class="card__info--row">
+								<i class="fa fa-phone fa-fw fa-lg c-info__icon"></i>
+								<div class="">{{$root.user.mobile | numberToPersia}}
+									<div ng-if='!$root.user.mobile' class="uk-text-muted u-s--2">شماره موبایل تعریف نشده</div>
+								</div>
+								<div>
+									<a uk-tooltip="uk-tooltip" ng-click="changeVisiblePhone()" title="برای عدم نمایش کلیک کنید" ng-show="$root.user.visiblePhone" class="u-s--2 pull-left  uk-link-text">نمایش</a>
+									<a uk-tooltip="uk-tooltip" ng-click="changeVisiblePhone()" title="برای نمایش کلیک کنید" ng-show="!$root.user.visiblePhone" class="u-s--2 pull-left  uk-link-text">عدم نمایش</a>
+								</div>
+							</div>
+							<div class="card__info--row">
+								<i class="fa fa-map-marker fa-fw fa-lg c-info__icon"></i>
+								<div>{{$root.user.address}}
+									<div ng-if='!$root.user.address.length' class="uk-text-muted u-s--2">آدرس تعریف نشده</div>
+								</div>
+								<div>
+									<a uk-tooltip="uk-tooltip" ng-click="changeVisibleAddress()" title="برای عدم نمایش کلیک کنید" ng-if="$root.user.visibleAddress" class="u-s--2 pull-left  uk-link-text">نمایش</a>
+									<a uk-tooltip="uk-tooltip" ng-click="changeVisibleAddress()" title="برای نمایش کلیک کنید" ng-if="!$root.user.visibleAddress" class="u-s--2 pull-left  uk-link-text">عدم نمایش</a>
+								</div>
+							</div>
+						</div>
+						<!-- /.card__body -->
+						<div>
+							<header class="card__heading card__heading--bw">
+								امتیازات شما
+							</header>
+		
+							<div>
+								<div>
+									<div>
+										<ul class="uk-child-width-expand@s uk-child-width-auto uk-flex-center uk-flex-bottom" uk-tab="connect: #component-tab-xs; animation: uk-animation-fade">
+											<li ng-repeat="job in $root.user.professions">
+												<a data-target="#">{{job.profession.title}}</a>
+											</li>
+										</ul>
+									</div>
+									<div class="card__body card__body--sm">
+										<ul class="uk-switcher uk-text-center" id="component-tab-xs">
+											<li ng-repeat="job in $root.user.professions">
+												<div>
+													<div>
+														<div class="u-c--1 u-b--5 u-s--5">{{ (job.rate) | number:1 | numberToPersia }}</div>
+														<div>
+															<fieldset class="rating2 uk-margin-vertical uk-text-center">
+																<input type="radio" id="star11-xs" name="rating3" value="1" />
+																<label style="color: rgb(255,215,0)" ng-if="job.rate>=5" class="full" for="star11-xs"></label>
+																<input type="radio" id="star101-xs" name="rating3" value="1" />
+																<label ng-if="job.rate<5" class="full" for="star101-xs"></label>
+																<input type="radio" id="star21-xs" name="rating3" value="2" />
+																<label style="color: rgb(255,215,0)" ng-if="job.rate>=4" class="full" for="star21-xs"></label>
+																<input type="radio" id="star201-xs" name="rating3" value="2" />
+																<label ng-if="job.rate<4" class="full" for="star201-xs"></label>
+																<input type="radio" id="star31-xs" name="rating3" value="3" />
+																<label style="color: rgb(255,215,0)" ng-if="job.rate>=3" class="full" for="star31-xs"></label>
+																<input type="radio" id="star301-xs" name="rating3" value="3" />
+																<label ng-if="job.rate<3" class="full" for="star301-xs"></label>
+																<input type="radio" id="star41-xs" name="rating3" value="4" />
+																<label style="color: rgb(255,215,0)" ng-if="job.rate>=2" class="full" for="star41-xs"></label>
+																<input type="radio" id="star401-xs" name="rating3" value="4" />
+																<label ng-if="job.rate<2" class="full" for="star401-xs"></label>
+																<input type="radio" id="star51-xs" name="rating3" value="5" />
+																<label style="color: rgb(255,215,0)" ng-if="job.rate>=1" class="full" for="star51-xs"></label>
+																<input type="radio" id="star501-xs" name="rating3" value="5" />
+																<label ng-if="job.rate<1" class="full" for="star501-xs"></label>
+															</fieldset>
+														</div>
+														<div class="u-c--3 u-s--2">از {{(job.rateCount) | numberToPersia}} نظر ثبت شده</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<!-- /.card__body card__body_sm -->
+								</div>
+							</div>
+		
+						</div>
+						<div id='intro-3'>
+							<header class="card__heading card__heading--bw card__info--bw c-h--icon">
+								<span>تخصص</span>
+								<button ng-click="openProffModal()" type="button" class="fa fa-plus-circle fa-lg uk-icon c-h__icon"></button>
+							</header>
+							<div uk-grid="uk-grid" class="uk-grid-small uk-padding-small uk-child-width-auto">
+								<div ng-repeat="proff in $root.user.professions">
+									<div class="card__badge">
+										{{proff.profession.title}}
+									</div>
+								</div>
+								<!-- /.uk-width-1-3 -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.uk-width-2-5@m -->
+				<div class="uk-width-3-5@m" ng-show='$root.user'>
+					<div id="info-card2" class="card">
+						<header class="card__heading">متن معارفه</header>
+						<div uk-grid="uk-grid" class="uk-grid-small uk-grid-match">
+							<div class="uk-width-1-4@m">
+								<ul class="uk-tab-right uk-flex-center uk-child-width-auto" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">
+									<li ng-repeat="job in $root.user.professions">
+										<a data-target="#">{{job.profession.title}}</a>
+									</li>
+								</ul>
+							</div>
+							<div class="uk-width-expand@m">
+								<div id="c-intro">
+									<ul id="component-tab-right" class="uk-switcher c-intro">
+										<li class="dashboard-tabs" ng-repeat="job in $root.user.professions" id="{{job._id}}text">
+											<div ng-init='$root.user.professions[$index].intro.description = ($root.user.professions[$index].intro.description === " ") ? "" : $root.user.professions[$index].intro.description'>
+												<textarea ng-model="$root.user.professions[$index].intro.description" class="uk-textarea card__textarea " placeholder="متن معارفه خود را وارد کنید"></textarea>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<!-- /#c-intro -->
+							</div>
+						</div>
+						<footer class="uk-card-footer">
+							<button type='button' ng-click="addIntro()" class="uk-button uk-button-primary">تایید</button>
+							<button type='button' ng-click="removeIntro()" class="uk-button uk-button-default">حذف</button>
+						</footer>
+					</div>
+					<div id="info-card3" class="card card--gallery">
+						<header class="card__heading">آلبوم عکس</header>
+						<div>
+							<div uk-grid="uk-grid" class="uk-grid-small uk-grid-match">
+								<div class="uk-width-1-4@m">
+									<ul class="uk-tab-right uk-flex-center uk-child-width-auto" uk-tab="connect: #component-tab-right2; animation: uk-animation-fade">
+										<li ng-repeat="job in $root.user.professions">
+											<a data-target="#">{{job.profession.title}}</a>
+										</li>
+									</ul>
+								</div>
+								<div class="uk-width-expand@m">
+									<ul id="component-tab-right2" class="uk-switcher">
+										<li ng-repeat="job in $root.user.professions" id="{{job._id}}video">
+											<div uk-grid="uk-grid" class="uk-child-width-1-2 uk-text-center gallery__inner">
+												<div>
+													<div class="uk-transition-toggle gallery__item">
+														<img ng-if="job.intro.photo1 != undefined" ng-src="{{job.intro.photo1.replace('public/','')}}" alt="">
+														<img ng-if="job.intro.photo1 == undefined" ng-src="../images/camera.jpg" alt="">
+														<div class="gallery__overlay">
+															<span class="uk-icon-link" ng-click="openModal('photo1')">
+																<i class="fa fa-plus fa-lg"></i>
+															</span>
+															<span uk-lightbox="uk-lightbox" class="uk-margin-right" ng-if="job.intro.photo1 != undefined">
+																<a class="uk-icon-link" href="{{job.intro.photo1.replace('public/','')}}">
+																	<i class="fa fa-eye fa-lg"></i>
+																</a>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="uk-transition-toggle gallery__item">
+														<img ng-if="job.intro.photo2 != undefined" ng-src="{{job.intro.photo2.replace('public/','')}}" alt="">
+														<img ng-if="job.intro.photo2 == undefined" ng-src="../images/camera.jpg" alt="">
+														<div class="gallery__overlay">
+															<span class="uk-icon-link" ng-click="openModal('photo2')">
+																<i class="fa fa-plus fa-lg"></i>
+															</span>
+															<span uk-lightbox="uk-lightbox" class="uk-margin-right" ng-if="job.intro.photo2 != undefined">
+																<a class="uk-icon-link" href="{{job.intro.photo2.replace('public/','')}}">
+																	<i class="fa fa-eye fa-lg"></i>
+																</a>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="uk-transition-toggle gallery__item">
+														<img ng-if="job.intro.photo3 != undefined" ng-src="{{job.intro.photo3.replace('public/','')}}" alt="">
+														<img ng-if="job.intro.photo3 == undefined" ng-src="../images/camera.jpg" alt="">
+														<div class="gallery__overlay">
+															<span class="uk-icon-link" ng-click="openModal('photo3')">
+																<i class="fa fa-plus fa-lg"></i>
+															</span>
+															<span uk-lightbox="uk-lightbox" class="uk-margin-right" ng-if="job.intro.photo3 != undefined">
+																<a class="uk-icon-link" href="{{job.intro.photo3.replace('public/','')}}">
+																	<i class="fa fa-eye fa-lg"></i>
+																</a>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="uk-transition-toggle gallery__item">
+														<img ng-if="job.intro.photo4 != undefined" ng-src="{{job.intro.photo4.replace('public/','')}}" alt="">
+														<img ng-if="job.intro.photo4 == undefined" ng-src="../images/camera.jpg" alt="">
+														<div class="gallery__overlay">
+															<span class="uk-icon-link" ng-click="openModal('photo4')">
+																<i class="fa fa-plus fa-lg"></i>
+															</span>
+															<span uk-lightbox="uk-lightbox" class="uk-margin-right" ng-if="job.intro.photo4 != undefined">
+																<a class="uk-icon-link" href="{{job.intro.photo1.replace('public/','')}}">
+																	<i class="fa fa-eye fa-lg"></i>
+																</a>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="uk-transition-toggle gallery__item">
+														<img ng-if="job.intro.photo5 != undefined" ng-src="{{job.intro.photo5.replace('public/','')}}" alt="">
+														<img ng-if="job.intro.photo5 == undefined" ng-src="../images/camera.jpg" alt="">
+														<div class="gallery__overlay">
+															<span class="uk-icon-link" ng-click="openModal('photo5')">
+																<i class="fa fa-plus fa-lg"></i>
+															</span>
+															<span uk-lightbox="uk-lightbox" class="uk-margin-right" ng-if="job.intro.photo5 != undefined">
+																<a class="uk-icon-link" href="{{job.intro.photo1.replace('public/','')}}">
+																	<i class="fa fa-eye fa-lg"></i>
+																</a>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="info-card4" class="card card--comments">
+						<header class="card__heading">نظرات مشتریان</header>
+						<div>
+							<div uk-grid="uk-grid" class="uk-grid-small uk-grid-match">
+								<div class="uk-width-1-4@m">
+									<ul class="uk-tab-right uk-flex-center uk-child-width-auto" uk-tab="connect: #component-tab-right3; animation: uk-animation-fade">
+										<li ng-repeat="job in $root.user.professions">
+											<a data-target="#">{{job.profession.title}}</a>
+										</li>
+									</ul>
+								</div>
+								<div class="uk-width-expand@m">
+									<ul id="component-tab-right3" class="uk-switcher">
+										<li ng-repeat="job in $root.user.professions" class="comments__inner" id="{{job._id}}comment">
+											<div ng-repeat="comment in job.comments" class="comments__item">
+												<div class="comments__header">
+													<div>
+														{{comment.customer.firstname}} {{comment.customer.lastname}}
+													</div>
+													<div>
+														<fieldset class="rating2 uk-margin-remove">
+															<input type="radio" id="star1" name="rating2" value="1" />
+															<label style="color: rgb(255,215,0)" ng-if="comment.rate>=5" class="full" for="star1"></label>
+															<input type="radio" id="star10" name="rating2" value="1" />
+															<label ng-if="comment.rate<5" class="full" for="star10"></label>
+															<input type="radio" id="star2" name="rating2" value="2" />
+															<label style="color: rgb(255,215,0)" ng-if="comment.rate>=4" class="full" for="star2"></label>
+															<input type="radio" id="star20" name="rating2" value="2" />
+															<label ng-if="comment.rate<4" class="full" for="star20"></label>
+															<input type="radio" id="star3" name="rating2" value="3" />
+															<label style="color: rgb(255,215,0)" ng-if="comment.rate>=3" class="full" for="star3"></label>
+															<input type="radio" id="star30" name="rating2" value="3" />
+															<label ng-if="comment.rate<3" class="full" for="star30"></label>
+															<input type="radio" id="star4" name="rating2" value="4" />
+															<label style="color: rgb(255,215,0)" ng-if="comment.rate>=2" class="full" for="star4"></label>
+															<input type="radio" id="star40" name="rating2" value="4" />
+															<label ng-if="comment.rate<2" class="full" for="star40"></label>
+															<input type="radio" id="star5" name="rating2" value="5" />
+															<label style="color: rgb(255,215,0)" ng-if="comment.rate>=1" class="full" for="star5"></label>
+															<input type="radio" id="star50" name="rating2" value="5" />
+															<label ng-if="comment.rate<1" class="full" for="star50"></label>
+														</fieldset>
+													</div>
+												</div>
+												<div class="comments__body">
+													{{comment.text}}
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+		
+						</div>
+					</div>
+				</div>
+				<!-- /.uk-width-3-5@m -->
+			</div>
+		</div>
+	</div>
+	<!-- /.dashboard__inner -->
+</div>
+<!-- /.dashboard -->
+
+<script type='text/ng-template' id='uploadModal.html'>
+	<div class="modal-header">
+		<div class="modal__close">
+			<button id="modal__close" type="button" uk-close="uk-close" ng-click="cancel()"></button>
+		</div>
+		<!-- /.modal__close -->
+		<img class="center-block logo-size" ng-show="!started" src="./images/logo-new-blue-black.png" alt="First slide">
+	</div>
+	<!-- /.modal-header -->
+	<div class="modal-body">
+		<div class="uk-placeholder uk-text-center" id='upload-doc'>
+			<div uk-form-custom>
+				<input id="aFile_upload" type="file">
+				<span class="uk-link">
+					یکی را انتخاب کنید
+				</span>
+			</div>
+			<span class="uk-text-middle">
+				فایل مورد نظر خود را در اینجا رها کنید و یا
+			</span>
+			<span uk-icon="icon: cloud-upload"></span>
+		</div>
+
+		<progress id="progressbar" class="uk-progress" value="0" max="100" hidden="hidden"></progress>
+	</div>
+	<!-- /.modal-body -->
+</script>
+
+<script type='text/ng-template' id='trust.html'>
+	<div class="modal-header uk-padding-remove-bottom">
+		<div class="modal__close">
+			<button id="modal__close" type="button" uk-close="uk-close" ng-click='cancel()'></button>
+		</div>
+		<!-- /.modal__close -->
+		<h3 class="u-h--1">درصد اطمینان چیست؟</h3>
+		<!-- /.u-h--1 -->
+	</div>
+	<!-- /.modal-header -->
+	<div class="modal-body">
+		<div class="">
+			<div class="uk-margin">
+				درصد اطمینان در واقع هسته اصلی تایید هویت و اطلاعات شما برای مشتری می باشد، به هر میزان که درصد شما بیشتر باشد ما به مشتری اطمینان می دهیم که اطلاعات شما صحیح و تایید شده است. شما می توانید با انجام اقدامات زیر این درصد را افزایش دهید و شانس خود را برای انتخاب از سوی مشتری بهبود بخشید
+			</div>
+			<p class="uk-alert uk-alert-danger">تمامی اطلاعات شما نزد ما محفوظ می ماند و ما تنها درصد اطمینان نهایی شما را به مشتری نمایش می دهیم.</p>
+			<div class="uk-margin">
+				<ul class="uk-list uk-list-divider">
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">عکس پروفایل شخصی ۵٪</div>
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" id="profile1profilePicture" type="submit" ng-click="openModal('profilePicture')">بارگذاری</button>
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#profColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="($root.user.trust.profilePicture.filePath != undefined && !$root.user.trust.profilePicture.verified) && !$root.user.trust.reviewRequest" class="uk-text-danger">تایید نشد
+											<i class="fa fa-warning"></i>
+										</p>
+										<p ng-if="($root.user.trust.profilePicture.filePath != undefined && !$root.user.trust.profilePicture.verified) && $root.user.trust.reviewRequest">در حال بررسی</p>
+										<p ng-if="$root.user.trust.profilePicture.filePath != undefined && $root.user.trust.profilePicture.verified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+							<div class="collapse uk-width-1-1" id="profColapse">
+								<div class="well">
+									با فرمت jpeg یا png و حجم کمتر از 1 مگابایت چهره شما واضح و قابل رویت باشد. عکس خانم ها بدون حجاب نباشد.
+								</div>
+							</div>
+						</div>
+						<!-- /.uk-flex-middle uk-grid-small -->
+					</li>
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">مدرک درسی، کارت دانشجویی و یا مدارک تخصصی ۱۵٪</div>
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" id="profile1certificate" type="submit" ng-click="openModal('certificate')">بارگذاری</button>
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#certifColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="$root.user.trust.certificate.filePath != undefined && $root.user.trust.certificate.verified == false">در حال بررسی</p>
+										<p ng-if="$root.user.trust.certificate.filePath != undefined && $root.user.trust.certificate.verified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+							<div class="collapse uk-width-1-1" id="certifColapse">
+								<div class="well">
+									مدارک شما باید مرتبط با تخصص انتخابی شما باشد. واضح و قابل رویت باشد. نام و نام خانوادگی شما برروی آن به صورت خوانا مشخص باشد.
+								</div>
+							</div>
+						</div>
+						<!-- /.uk-flex-middle uk-grid-small -->
+					</li>
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">شماره موبایل تایید شده ۵٪</div>
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#mobileColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="$root.user.mobileVerified == false" class="">در حال بررسی</p>
+										<p ng-if="$root.user.mobileVerified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+									<!-- /.uk-text-meta -->
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+							<div class="collapse uk-width-1-1" id="mobileColapse">
+								<div class="well">
+									شماره موبایل باید تایید شود
+								</div>
+							</div>
+						</div>
+						<!-- /.uk-flex-middle uk-grid-small -->
+					</li>
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">آپلود کارت ملی ۲۰٪</div>
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" id="profile1idCard" type="submit" ng-click="openModal('idCard')">بارگذاری</button>
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#idColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="$root.user.trust.idCard.filePath != undefined && $root.user.trust.idCard.verified == false">در حال بررسی</p>
+										<p ng-if="$root.user.trust.idCard.filePath != undefined && $root.user.trust.idCard.verified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+									<!-- /.uk-text-meta -->
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+							<div class="collapse uk-width-1-1" id="idColapse">
+								<div class="well">
+									عکس، نام و نام خانوادگی، کد ملی یا شماره شناسنامه و تاریخ تولد به صورت واضح و قابل رویت باشند.
+								</div>
+							</div>
+						</div>
+						<!-- /.uk-flex-middle uk-grid-small -->
+					</li>
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">
+								<div>تایید هویت ۲۰٪</div>
+								<div class="uk-text-meta">
+									کد احراز هویت شما: <span class='uk-text-primary'>{{$root.user.trust.identity.code}}</span></div>
+							</div>
+							<!-- /.uk-width-expand -->
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" id="profile1identity" type="submit" ng-click="openModal('identity')">بارگذاری</button>
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#idenColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="$root.user.trust.identity.filePath != undefined && $root.user.trust.identity.verified == false">در حال بررسی</p>
+										<p ng-if="$root.user.trust.identity.filePath != undefined && $root.user.trust.identity.verified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+									<!-- /.uk-text-meta -->
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+							<div class="collapse uk-width-1-1" id="idenColapse">
+								<div class="well">
+									به شما یک کد مخصوص ارسال می شود و شما می توانید آن را پرینت بگیرید یا روی برگه کاغذ بنوسید شما باید عکسی از خودتان آپلود کنید که کد مخصوص و کارت شناسایی خود را در دست داشته باشید مطمئن شوید که چهره شما، کد و کارت شناسایی به صورت واضح قابل رویت باشد
+								</div>
+							</div>
+						</div>
+						<!-- /.uk-flex-middle uk-grid-small -->
+					</li>
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">تایید آدرس ۱۵٪</div>
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" id="profile1addressProof" type="submit" ng-click="openModal('addressProof')">بارگذاری</button>
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#addrColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="$root.user.trust.addressProof.filePath != undefined && $root.user.trust.addressProof.verified == false">در حال بررسی</p>
+										<p ng-if="$root.user.trust.addressProof.filePath != undefined && $root.user.trust.addressProof.verified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+							<!-- /.uk-text-meta -->
+							<div class="collapse uk-width-1-1" id="addrColapse">
+								<div class="well">
+									قبوض آب، برق یا تلفن حداکثر برای 3 ماه گذشته می بایست شامل آدرس، نام و نام خانوادگی، شماره تلفن و به صورت خوانا باشد
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="uk-flex-middle uk-grid-small" uk-grid>
+							<div class="uk-width-expand">گواهی عدم سوء‌پیشینه ۲۰٪</div>
+							<div>
+								<div class="uk-flex-column--s">
+									<div class="uk-button-group">
+										<button class="uk-button uk-button-default uk-button-small" id="profile1backgroundCheck" type="submit" ng-click="openModal('backgroundCheck')">بارگذاری</button>
+										<button class="uk-button uk-button-default uk-button-small" type="button" data-toggle="collapse" data-target="#backColapse" aria-expanded="false">توضیحات</button>
+									</div>
+									<div class="uk-text-meta">
+										<p ng-if="$root.user.trust.backgroundCheck.filePath != undefined && $root.user.trust.backgroundCheck.verified == false">در حال بررسی</p>
+										<p ng-if="$root.user.trust.backgroundCheck.filePath != undefined && $root.user.trust.backgroundCheck.verified == true" class="uk-text-primary">تایید شد</p>
+									</div>
+									<!-- /.uk-text-meta -->
+								</div>
+								<!-- /.uk-flex-column--s -->
+							</div>
+						</div>
+						<div class="collapse uk-width-1-1" id="backColapse">
+							<div class="well">
+								با مراجعه به مراکز پلیس + 10 درخواست صدور گواهی عدم سوء پیشینه کنید و عکس آن را برای ما آپلود کنید. گواهی عدم سوء پیشنه شما باید همراه با تاریخ انقضا باشد
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /.modal-body -->
+</script>
+
+<div id="createJobFromLanding" class="uk-flex-top" uk-modal='bg-close:false;'>
+	<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+		<p class="h4">
+			شما در حال ساخت یک پروژه بودید
+		</p>
+		<p class="uk-text-center">
+			<button ng-click="declineLandingJob()" class="uk-button uk-button-default " type="button">منصرف شدم</button>
+			<button ng-click="createLandingJob()" class="uk-button uk-button-primary " type="button">بله، میسازم</button>
+		</p>
+		<div style="text-align: center" class="alert alert-danger  h6" role="alert" dir="rtl" ng-show="addProffErr2">
+			<button ng-click="addProffErr2=false;" type="button" class="close" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button> امکان ایجاد این شغل برای شما وجود ندارد
+		</div>
+	</div>
+</div>

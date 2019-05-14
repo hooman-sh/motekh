@@ -1,0 +1,25 @@
+<div class="modal-header">
+	<div class="modal__close">
+		<button id="modal__close" type="button" uk-close="uk-close" ng-click="cancel()"></button>
+	</div>
+	<!-- /.modal__close -->
+	<img class="center-block logo-size" ng-show="!started" src="./images/logo-new-blue-black.png" alt="First slide">
+</div>
+<!-- /.modal-header -->
+<div class="modal-body">
+	<div class="uk-placeholder uk-text-center" id='upload-doc'>
+		<span class="uk-text-middle">
+			فایل مورد نظر خود را در اینجا رها کنید و یا
+		</span>
+		<div uk-form-custom>
+			<input id="aFile_upload" type="file">
+			<span class="uk-link">
+				یکی را انتخاب کنید
+				<span uk-icon="icon: cloud-upload"></span>
+			</span>
+		</div>
+	</div>
+
+	<progress id="progressbar" class="uk-progress" value="0" max="100" hidden="hidden"></progress>
+</div>
+<!-- /.modal-body -->

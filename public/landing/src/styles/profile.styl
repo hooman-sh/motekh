@@ -1,0 +1,24 @@
+@import 'variables'
+
+.profile
+	&__rate
+		&:empty
+			&:after
+				content 'نظری داده نشده'
+				display block
+				text-align center
+				color $black3
+				font-size .9rem
+				font-weight 500
+
+	&__pics
+		&:empty
+			padding 1rem
+			&:after
+				content ''
+				width 100px
+				height 80px
+				margin-right 30px
+				border-radius 8px
+				overflow hidden
+				background url('/images/camera.jpg') center center / contain no-repeat

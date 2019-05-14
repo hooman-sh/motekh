@@ -1,0 +1,91 @@
+<div class="uk-container uk-container-expand uk-height-1-1 card--footer-btn">
+	<div class="uk-flex uk-flex-column uk-flex-center uk-child-width-1-1" ng-class='{"uk-flex-middle": ($root.requests.length == 0), "uk-height-1-1": ($root.requests.length == 0)}' ng-show='requests' ng-init='$root.updateViewport()'>
+		<div ng-repeat="req in $root.requests" class="card card--sm uk-animation-slide-right-small requests-card" style='animation-delay: {{($index / 9)}}s'>
+			<div class="card__body">
+				<div class="uk-flex uk-flex-between uk-flex-middle">
+					<div>
+						<div class="card__title">
+							{{req.job.creator.firstname}} {{req.job.creator.lastname}}
+						</div>
+						<div class="card__sub">
+							{{req.city || req.job.location}} - متقاضی {{req.profession}}
+						</div>
+					</div>
+					<div class="card__price">
+						<div ng-if="req.costPerUnit != null">
+							<span ng-if="req.costUnit == 'project'">پروژه ای</span>
+							<span ng-if="req.costUnit == 'daily'">روزی</span>
+							<span ng-if="req.costUnit == 'monthly'">ماهیانه</span>
+							<span ng-if="req.costUnit == 'hourly'">ساعتی</span>
+							<strong>{{req.costPerUnit | numberToPersia}}</strong> تومان
+						</div>
+						<div ng-if="req.costPerUnit == null">
+							توافقی
+						</div>
+					</div>
+				</div>
+				<div class="uk-margin uk-text-center">
+					<span class="u-s--2 u-c--3">
+						وضعیت پروژه
+					</span>
+					<span class="u-s--3 u-c--1 u-b--9">
+						<span ng-if='req.job.status == "deleted"' style="color: red">حذف شده</span>
+						<span ng-if='req.job.status != "deleted"'>
+							<span ng-if="req.status == 'new'" style="color: #2377ce">پروژه باز</span>
+							<span ng-if="req.status == 'rated'" style="color: black">اتمام پروژه</span>
+							<span ng-if="req.status == 'approved'" style="color: rgb(55,188,101);">استخدام شدم</span>
+							<span ng-if="req.status == 'canceled'" style="color: red">کنسل شده</span>
+							<span ng-if="req.status == 'seen'" style="color: deepskyblue">دیده شده</span>
+							<span ng-if="req.status == 'accepted'" style="color: deepskyblue">منتظر تایید شما</span>
+						</span>
+					</span>
+				</div>
+				<div id='request__btns' class="uk-margin uk-text-center" ng-if="req.status == 'accepted'">
+					<div class="uk-button-group">
+						<button class="uk-button uk-button-small uk-button-default" ng-click="openDeclineModal(req._id)">رد درخواست
+							<span uk-icon="icon: close" class="uk-icon"></span>
+						</button>
+						<button class="uk-button uk-button-small uk-button-primary" ng-click='openAcceptModal(req._id)'>قبول درخواست
+							<span uk-icon="icon: check" class="uk-icon"></span>
+						</button>
+					</div>
+				</div>
+				<!-- /.uk-text-center -->
+			</div>
+			<div>
+				<!-- <button disabled class="card__btn card__btn--footer" ng-if='req.job == null || req.job.status == "deleted"'>پروژه حذف شد</button> -->
+				<a ui-sref='pages.request({id: req._id})' ng-if='req.job != null && req.job.status != "deleted"' class="card__btn card__btn--footer">مشاهده جزئیات</a>
+			</div>
+		</div>
+		<div ng-if="$root.requests.length == 0" class="uk-animation-shake">
+			<div class="uk-heading-line uk-text-center">
+				<span>
+					در حال حاضر درخواستی برای شما ثبت نشده است
+				</span>
+			</div>
+			<!-- /.uk-heading-line uk-text-center -->
+		</div>
+	</div>
+</div>
+<!-- /.uk-container uk-container-expand -->
+
+<script type='text/ng-template' id='declineJob.html'>
+	<div class="modal-header uk-flex uk-flex-middle uk-flex-between">
+		<div class="uk-text-bold uk-float-right">آیا از رد درخواست مطمئنید؟</div>
+		<div class='uk-button-group uk-float-left'>
+			<button class="uk-button uk-button-default" ng-click='Ctrl.cancel()' type='button'>خیر <span uk-icon="icon: close" class="uk-icon"></span></button>
+			<button promise-btn class="uk-button uk-button-danger" ng-click="decline(Ctrl.id)">بله <span uk-icon="icon: check" class="uk-icon"></span></button>
+		</div>
+	</div>
+	<!-- /.modal-header -->
+</script>
+<script type='text/ng-template' id='acceptJob.html'>
+	<div class="modal-header uk-flex uk-flex-middle uk-flex-between">
+		<div class="uk-text-bold uk-float-right">آیا از قبول درخواست مطمئنید؟</div>
+		<div class='uk-button-group uk-float-left'>
+			<button class="uk-button uk-button-default" ng-click='Ctrl.cancel()' type='button'>خیر <span uk-icon="icon: close" class="uk-icon"></span></button>
+			<button promise-btn class="uk-button uk-button-primary" ng-click="accept(Ctrl.id)">بله <span uk-icon="icon: check" class="uk-icon"></span></button>
+		</div>
+	</div>
+	<!-- /.modal-header -->
+</script>

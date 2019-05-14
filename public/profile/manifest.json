@@ -1,0 +1,21 @@
+{
+	"name": "Jopp - جاپ",
+	"short_name": "Jopp",
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#1e87f0",
+	"background_color": "#1e87f0",
+	"orientation": "landscape",
+	"description": "جاپ: خدمات استخدام، کارسپاری و کاریابی آنلاین",
+	"icons": [
+	{
+		"src": "images/logo-single-blue.png",
+		"sizes": "48x48",
+		"type": "image/png"
+	}],
+	"related_applications": [
+	{
+		"id": "main",
+		"platform": "web"
+	}]
+}

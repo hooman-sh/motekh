@@ -1,0 +1,241 @@
+<div class="uk-container uk-container--md settings">
+	<div id="settingCard" class="uk-animation-slide-top-small" ng-if='$root.user'>
+		<div class="card card--md">
+			<div class="card__body">
+				<div uk-grid class="uk-child-width-1-1 uk-grid-divider">
+					<div class="">
+						<div class="u-hr--1">
+							مشخصات کلی
+						</div>
+						<div class="uk-flex-middle uk-child-width-1-2@m" uk-grid>
+							<div class="">
+								<div class="card__avatar" ng-click="openModal('profilePic1')">
+									<img class="img-responsive img-circle" ng-src="{{user.trust.profilePicture.filePath.replace('public/','')}}" />
+									<img class="img-responsive img-circle" ng-if="!user.trust.profilePicture.filePath" src="profile/images/unknown.jpg" />
+								</div>
+							</div>
+							<div>
+								<div class="card__info card__info--row">
+									<i class="fa fa-phone fa-lg fa-fw c-info__icon"></i>
+									<div>{{user.mobile | numberToPersia}}</div>
+								</div>
+								<div class="card__info card__info--row">
+									<i class="fa fa-map-marker fa-lg fa-fw c-info__icon"></i>
+									<div>
+										{{user.address | numberToPersia}}
+										<div ng-if='!user.address.length' class="uk-text-muted u-s--2">آدرس تعریف نشده</div>
+									</div>
+									<i class="fa fa-pencil fa-lg fa-fw" ng-click="openAnModal('addressModal');"></i>
+								</div>
+								<div class="card__info card__info--row">
+									<i class="fa fa-envelope fa-lg fa-fw c-info__icon"></i>
+									<div>{{user.email}}</div>
+									<i class="fa fa-pencil fa-lg fa-fw" ng-click="openAnModal('emailModal')"></i>
+								</div>
+								<div class="card__info card__info--row">
+									<i class="fa fa-lock fa-lg fa-fw c-info__icon"></i>
+									<div>رمز عبور</div>
+									<i class="fa fa-pencil fa-lg fa-fw" ng-click="openAnModal('resetPass')"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="u-hr--2 uk-position-relative">
+							<div>
+								تخصص ها
+							</div>
+							<!-- <button type='button' ng-click="openProffModal()" class="uk-button uk-button-small uk-flex uk-flex-middle uk-button-default uk-position-center-left">افزودن  -->
+							<a href="" ng-click="openProffModal()" class="u-s--2 uk-flex uk-flex-middle uk-position-center-left uk-icon">
+									افزودن 
+									<span uk-icon='icon: plus-circle; ratio: 1'></span>
+								</a>
+							<!-- </button> -->
+						</div>
+						<div>
+							<div>
+								<div>
+									<form ng-submit='Ctrl.updateNotifyConfig()' name='Ctrl.notifyConfig' id='notifyConfig' ng-if='$root.user.professions.length' ng-class="{'el--loader': Ctrl.notifyConfigLoading}">
+										<ul>
+											<li ng-repeat="prof in $root.user.professions">
+												<div class='card__info--row uk-width-1 u-b--7 u-s--5'>
+													{{prof.profession.title}}
+													<div class="fa-fw uk-margin-small-left uk-margin-auto-right">
+														<button type='button' ng-click="removeProffCheck(prof._id)" uk-icon='icon: close'>
+														</button>
+													</div>
+												</div>
+												<div class="uk-margin-bottom u-s--2">
+													<div>
+														<ng-form name='{{$index}}'>
+															<span class="u-hr--4 uk-margin-left">باخبر شدن از پروژه های جدید از طریق:</span>
+															<input type="hidden" name='id' ng-model='prof._id'>
+															<!-- /.u-hr--4 -->
+															<label for="notify--sms{{$index}}" class="uk-margin-left">
+																<input type="checkbox" class="uk-checkbox" id='notify--sms{{$index}}' name='sms' ng-model='prof.notificationConfig.sendSMS'> اس‌ام‌اس
+															</label>
+															<label for="notify--email{{$index}}">
+																<input type="checkbox" class="uk-checkbox" id='notify--email{{$index}}' name='email' ng-model='prof.notificationConfig.sendEmail'> ایمیل
+															</label>
+														</ng-form>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<button promise-btn class="uk-button uk-button-primary uk-button-small uk-margin-auto-right uk-display-block" type='submit'>
+											ذخیره
+											<span class="uk-icon" uk-icon='icon: check'></span>
+											<!-- /.uk-icon -->
+										</button>
+										<!-- /.uk-button uk-button-primary -->
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="isProff == 'false'" class="uk-text-center uk-margin-remove-bottom" uk-alert>
+					با انتخاب تخصص می توانید به عنوان متخصص نیز فعالیت کنید و پروژه بگیرید
+				</div>
+			</div>
+			<!-- /.card__body -->
+		</div>
+	</div>
+</div>
+
+<div class="" uk-modal id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="uk-modal-dialog uk-modal-body">
+		<button class="uk-modal-close-default" type="button" uk-close></button>
+		<div class="">
+			<div class="uk-modal-title uk-margin-bottom">
+				<img class="center-block logo-size" ng-show="!started" src="./images/logo-new-blue-black.png" alt="First slide" style="">
+			</div>
+			<div class="">
+				<div class="test-upload uk-placeholder uk-text-center">
+					<div uk-form-custom>
+						<input id="aFile_upload" type="file">
+						<span class="uk-link persian">یکی را انتخاب کنید
+						</span>
+					</div>
+					<span class="uk-text-middle persian">فایل مورد نظر خود را در اینجا رها کنید و یا
+					</span>
+					<span uk-icon="icon: cloud-upload"></span>
+				</div>
+
+				<progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="" uk-modal id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModalLabel">
+	<div class="uk-modal-dialog uk-modal-body">
+		<button class="uk-modal-close-default" type="button" uk-close></button>
+		<div class="">
+			<div class="uk-modal-title uk-margin-bottom">
+				<img class="center-block logo-size" ng-show="!started" src="../images/logo-new-blue-black.png" alt="First slide" style="">
+				<h4 class="persian modalHead" dir="rtl" ng-show="started">{{head}}</h4>
+			</div>
+			<div class="">
+				<form ng-submit="addressChange()" name="addressForm">
+					<div class="form-group uk-width-1-2@s uk-margin-auto">
+						<input pattern="[  ،.۱۲۳۴۵۶۷۸۹۰ةآييابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیأيئ]+$" autocomplete="off" class="uk-input" placeholder="آدرس" required name="address" ng-model="address" type="text">
+						<div style="text-align: center; margin: 2%;" ng-show=" addressForm.address.$error.pattern  " class="bg-danger persian">لطفا آدرس خود را فارسی وارد کنید</div>
+						<button promise-btn ng-click="addressChange()" ng-disabled="addressForm.address.$error.pattern || addressForm.address.$error.required " type="button" class="uk-button uk-button-primary center-block">ثبت</button>
+						<div style="text-align: center" class="alert alert-danger persian h6" role="alert" dir="rtl" ng-show="changeAddrErr">
+							<button id="addrErrClose" ng-click="changeAddrErr=false;" type="button" class="close" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							مشکلی پیش آمده مجددا تلاش کنید
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="" uk-modal id="resetPass" tabindex="-1" role="dialog" aria-labelledby="resetPassModalLabel">
+	<div class="uk-modal-dialog uk-modal-body">
+		<button class="uk-modal-close-default" type="button" uk-close></button>
+		<div class="">
+			<div class="uk-modal-title">
+				<img class="center-block logo-size" ng-show="!started" src="../images/logo-new-blue-black.png" alt="First slide" style="">
+			</div>
+			<div class="">
+				<form ng-submit="resetpass()" name="resetPassForm">
+					<div class="form-group uk-width-1-2 uk-margin-auto">
+						<input minlength="6" autocomplete="off" class="uk-input" dir="rtl" placeholder="رمز قدیم" required name="resetPass" ng-model="oldPass" type="password">
+					</div>
+					<div class="form-group uk-width-1-2 uk-margin-auto">
+						<input autocomplete="off" class="uk-input" type="password" id="newResetPass" minlength="6" placeholder="رمز جدید" required ng-model="newPass" name="pass">
+						<p style="color: red;float: right" ng-show="(resetPassForm.pass.$invalid) && resetPassForm.pass.$touched" class="help-block persian">
+							رمزعبور باید حداقل ۶ کاراکتر داشته باشد</p>
+					</div>
+					<div class="form-group uk-width-1-2 uk-margin-auto">
+						<input autocomplete="off" compare-to="newPass" class="uk-input" type="password" id="confirm_passwordResset" placeholder=" تکرار رمز جدید" required name="passRepeat" ng-model="repPass">
+						<span id='message' tabindex="6"></span>
+						<p style="color: red;float: right" ng-show="(resetPassForm.passRepeat.$invalid || resetPassForm.passRepeat.$error.required)&& resetPassForm.passRepeat.$touched " class="help-block persian">
+							لطفا مجددا رمز خود را به درستی وارد کنید</p>
+					</div>
+					<button promise-btn minlength="6" ng-click="resetpass()" ng-disabled="resetPassForm.passRepeat.$invalid || resetPassForm.newPass.$error.required || resetPassForm.resetPass.$error.required || resetPassForm.newPass.$invalid || resetPassForm.resetPass.$invalid" type="button" class="uk-button modal-button center-block">ثبت</button>
+					<div style="text-align: center" class="alert alert-danger persian h6" role="alert" dir="rtl" ng-show="changePassErr">
+						<button id="passErrClose" ng-click="changePassErr=false;" type="button" class="close" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						رمز عبور خود را اشتباه زده اید و یا رمز جدید و قدیم یکسان است
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="" uk-modal id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel">
+	<div class="uk-modal-dialog uk-modal-body">
+		<button class="uk-modal-close-default" type="button" uk-close></button>
+		<div class="uk-modal-title uk-margin-bottom">
+			<img class="center-block logo-size" ng-show="!started" src="../images/logo-new-blue-black.png" alt="First slide" style="">
+		</div>
+		<!-- /.uk-modal-title -->
+		<h4 class="modalHead" ng-show="started">{{head}}</h4>
+		<!-- </div> -->
+		<div class="">
+			<form ng-submit="emailChange()" name="emailForm">
+				<div class="form-group uk-padding-remove-vertical uk-padding uk-width-1-2@s uk-margin-auto">
+					<input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" autocomplete="off" class="uk-input" placeholder="ایمیل" required name="email" ng-model="email" type="text">
+				</div>
+				<div style="text-align: center; margin: 2%;" ng-show=" emailForm.email.$error.pattern  " class="bg-danger persian">لطفا آدرس ایمیل خود را صحیح وارد کنید</div>
+				<button promise-btn ng-click="emailChange()" ng-disabled="emailForm.email.$error.pattern || emailForm.email.$error.required " type="button" class="btn modal-button center-block right persian">ثبت</button>
+				<div id="mailErr" style="text-align: center" class="alert alert-danger persian h6" role="alert" dir="rtl" ng-show="changeMailErr">
+					<button id="mailErrClose" ng-click="changeMailErr=false;" type="button" class="close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					مشکلی پیش آمده مجددا تلاش کنید
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="welcomeModal" style="z-index:9991!important;" class="uk-modal-full" uk-modal='bg-close:false;'>
+	<div class="uk-modal-dialog uk-modal-body" style="height:100%;">
+		<welcome-tag></welcome-tag>
+	</div>
+</div>
+
+<script type="text/ng-template" id='removeProff.html'>
+	<div class="modal-header uk-text-right">
+		<h4 class='u-b--7 uk-text-danger'>در صورت حذف تخصص انتخاب شده امکان اضافه کردن مجدد آن نیست</h4>
+		<div class='modal__close'>
+			<button id="modal__close" type="button" uk-close ng-click='cancel()'></button>
+		</div>
+	</div>
+	<!-- /.modal-header -->
+	<div class="modal-footer">
+		<button type="button" class="uk-button uk-button-danger" ng-click="goOnRemoveIt()" promise-btn>ادامه</button>
+	</div>
+	<!-- /.modal-footer -->
+</script>
